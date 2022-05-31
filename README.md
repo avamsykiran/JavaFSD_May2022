@@ -43,6 +43,47 @@ Full Stack Development
             Testing         Testing Terminology, Unit Testing, Mocking and Stubs, Integration Testing, e2e Testing
             Deploymnet      Dev-Ops
             
+SCM - Source Code Management
+-----------------------------------------------------------------
+
+    SCM / SVM are repositories of code used to manage various versions and share them 
+    across multiple stake holders.
+
+        GIT is a very commonly used SCM
+
+        remote repository               <------------->         local repository
+
+        git cli     is a command line interface offering some commands to manage the repository
+
+
+        git init    is used to initalize a folder as a local repository
+
+        git add .   to add the files into the staging area.
+
+        git status  to know the status of the repository
+
+        git commit -m "message"         is used to seal the changes made to the files in the staging area.
+
+        git log     the list of all the commits made so far
+
+        git remote add origin "remote-repo-url"     is used to link a remore repo to our local repo
+
+        git push origin master          to send all the commit made so far to the remote repo.
+
+        git clone remote-repo-url       copy / download the remote repo to our local disk.
+
+        git pull                        downlod the changes from remote into local repo.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
