@@ -29,6 +29,8 @@ MongoDB
                         has multiple Packages
                                         has a group of Channels
                 
+                    BSON - Binary Javascript object notation
+
                     Subscribers: [{
                         subId
                         subName
