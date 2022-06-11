@@ -84,8 +84,107 @@ BackEnd - Java
                         jar                 java archive            
                                             pack or unpack a .jar file 
 
-
         Tokens
-        
+
+            Identifiers
+                    is a name given to any resource like varaible, object, class, fucntion ..etc.,
+                    
+                    Rules
+                        1. an identifier can be alpha-numeric but must start with a alphabet.
+                        2. an identifier cna be of any length but minimum one.
+                        3. an identifier cna not have spaces or any special symbols in it but underscore(_) is allowed.
+                        4. an identifer can not match with a key word.
+                        5. no two resources cna have the same identifier.
+
+                    Conventions
+                        variables and methods
+
+                            start and continue in lower case, and from second word initial capitals mst be followed.
+
+                            height
+                            boxHeight
+
+                            display()
+                            displayData()
+
+                        classes, interfaces, annotations and enums
+
+                            follow initial capitals all through the name.
+
+                            Box
+                            BoxWithLid
+                            Exception
+                            ArrayIndexOutOfBoundsException
+
+                        constants
+
+                            must be all caps and _ is used to seperate words.
+
+                            LIMIT
+                            MAX_LIMIT
+                            MIN_LIMIT
+
+                        packages
+
+                            must be all lowercased and abrevated
+
+                            io
+                            util
+                            lang
+                            ...etc.,
+
+            Keywords
+
+                    reserved words in a language for some specific purpose, we ahve around 54 keywords in java.
+
+            Operators
+
+                    words / symbols used to represent an operation.
+
+                    Binary Operators
+                        Arthmetic      +,-,*,/,%
+                        Relational     <,>,<=,>=,!=,==
+                        Logical        &&,||,!
+                        Assignment     =,+=,-=,*=,/=,%=
+
+                    Unary Operators     -,++,--
+                    Ternary Operator    cond ? true_exp : false_exp ;
+
+                    Bitwise Operators       &,|,^,~,<<,>>
+                    Misllinous Operators
+                                ;
+                                { }
+                                ( )
+                                < >
+                                instacneof
+                                .
+                                ::
+                                ...
+
+            Comments            //single lien comments or line-end comments
+                                /*
+                                    block commnts or
+                                    multi-line comments
+                                */
+
+            Literals
+
+                hardcoded values in a source code.
+
+                c = 2 * PI * r;
+
+                c,r,PI are identifers
+                =,*,; are operators
+                2 is a literal
+
+                Integer
+                    Decimal Number System           1  18  21       1_03_45_60_892
+                    Octal Number System             01  08  081
+                    HexaDecimal Number System       0xA 0xF22
+                Flioating Point                     3.14
+                String                              "Hello "
+                Character                           '$'
+                Void                                null
+                Boolean                             true,false
 
 
