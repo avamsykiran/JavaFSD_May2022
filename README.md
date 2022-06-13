@@ -55,7 +55,6 @@ SCM - Source Code Management
 
         git cli     is a command line interface offering some commands to manage the repository
 
-
         git init    is used to initalize a folder as a local repository
 
         git add .   to add the files into the staging area.
