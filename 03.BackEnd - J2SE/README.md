@@ -196,3 +196,115 @@ BackEnd - Java
                     System.out.println("Hello World! Welcome To Java");
                 }
             }
+
+        Object Oriented Programming
+        -------------------------------------------------------------------
+
+            Class And Object
+
+                class is a user defined data type, it encapsulates
+                state and behaviour as fields and methods respectively.
+
+                class Rectangle {
+                    int length;
+                    int breadth;
+
+                    int getArea(){
+                        return length*breadth;
+                    }
+
+                    int getPerimeter(){
+                        return 2*(length+breadth);
+                    }
+                }
+
+                object is a variable of class type.
+
+                Rectangle r; //declaration
+                r = new Rectangle(); //allocation
+                Rectangle r2 = new Rectangle(); //initialization
+                Rectangle r3 = r;
+
+                r.length = 56;
+                r.breadth = 88;
+                System.out.println(r.getArea());
+
+            Encapsulation
+
+                Encapsulation, also known as data hiding,
+                is a concept of providing indirect access to protoect
+                the state from misuse.
+
+                Encapsulation is achived through access specifiers
+                and getter,setter methods.
+
+                Access Specifiers
+                    default
+                    private
+                    protected
+                    public
+
+                    if a field or method is not marked with
+                    any access specifier then they come under
+                    default access specifier
+
+                    or else a field or a method can be marked
+                    as private or protected or public.
+
+                    private fields or methods can be accessed
+                    only within the class definition.
+
+                    public fields or methods can be accessed
+                    any where in the program.
+
+                    class Rectangle {
+                        private int length;
+                        private int breadth;
+
+                        public void setLength(int length){
+                            this.length=length;
+                        }
+
+                        public int getLength(){
+                            return length;
+                        }
+
+                        public void setBreadth(int breadth){
+                            this.breadth=breadth;
+                        }
+
+                        public int getBreadth(){
+                            return breadth;
+                        }
+
+                        public int getArea(){
+                            return length*breadth;
+                        }
+
+                        public int getPerimeter(){
+                            return 2*(length+breadth);
+                        }
+                    }
+  
+                Rectangle r1= new Rectangle(); 
+                Rectangle r2= new Rectangle(); 
+
+                r1.setLength(56);
+                r1.setBreadth(88);
+                System.out.println(r1.getArea());
+
+                r2.setLength(156);
+                r2.setBreadth(288);
+                System.out.println(r2.getArea());
+
+                'this' keyword refers to the current object of a method
+
+                @ System.out.println(r1.getArea()); this of getArea is r1
+                @ System.out.println(r2.getArea()); this of getArea is r2
+
+                Constructor
+                'static' keyword
+
+            Inheretence
+            Polymorphisim
+            Abstraction
