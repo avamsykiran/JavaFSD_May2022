@@ -303,8 +303,66 @@ BackEnd - Java
                 @ System.out.println(r2.getArea()); this of getArea is r2
 
                 Constructor
+
+                    is a special method that gets invoked immediatly after an object
+                    gets allocated.
+
+                    genrally cosntructors are used to pass values into the fields of an object
+                    as when it is allocated.
+
+                    constructors must have the same name as that of the class and they do not return
+                    anything even not void.
+
+                    if a class has no cosntructor defiend, then a constructor with no implementation
+                    is automatically defiend in it at the tiem of compilation.
+
                 'static' keyword
 
+                    static fields are also called class variables and the non-static fields are called
+                    instance variables. For each object of a class a seperate copy of instance variables are 
+                    allocated but all the objects of a class will have the same copy of class variables.
+
+                    static methods are used to represent common operations. The static emthods can
+                    access only static members of the class directly. If static methods are public
+                    they can be invoked by the class name itself.
+
+                    static block
+
+                        static {
+                            //any java code...
+                            //a class can have one and only static block
+                            //the static block is executed when the class is accessed for the first time
+                            //and a static block executes only once.
+                        }
+
             Inheretence
-            Polymorphisim
+
+                is the concept of defining a new data type from and exiting data type.
+
+                the existing type is called super type
+                and teh new one is called sub type.
+
+                single          Rectangle (length,breadth) <---------- Cuboid ( height)
+                multi-level     Employee (empId,name,basic) <----- Manager ( allowence) <---- Director ( share)
+                heirarichial
+                                                                    | <--------- ContractEmployee ( contractDuration)
+                                Employee (empId,name,basic) <-----  |
+                                                                    | <----------- Manager ( allowence) 
+
+                hybrid
+                                                                    | <--------- ContractEmployee ( contractDuration)
+                                Employee (empId,name,basic) <-----  |
+                                                                    | <----------- Manager ( allowence) <---- Director ( share)
+
+
+                    1. Whenever a sub class object is allocated, the super class constructor is invoekd first followed 
+                        by the sub class constructor
+
+                    2. Super type references can hold an object of the sub type
+
+                            Rectangle r = new Cuboid(); //it is possible 
+
+            
+            Polymorphisim           
+            
             Abstraction
