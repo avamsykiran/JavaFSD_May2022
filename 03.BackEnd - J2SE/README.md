@@ -360,9 +360,164 @@ BackEnd - Java
 
                     2. Super type references can hold an object of the sub type
 
-                            Rectangle r = new Cuboid(); //it is possible 
+                            Rectangle r = new Cuboid(); //it is possible , implicit type casting
+
+                            Employee e1 = new Employee();
+                            Employee e2 = new Manager();
+                            Employee e3 = new ContractEmployee();
+                            Manager m = new ContractEmployee(); // compilation error
+                            Employee e4 = new Director();
+                            Manager m1 = new Director();
+                            Diector d = new Manager(); //compilation error
+
+                            Manager mObj1 = (Manager) e1; //Runtime ClassCastException
+                            Manager mObj2 = (Manager) e2; //explict type casting
+                            ContractEmployee ce = (ContractEmployee) e3; //explict type casting
+
+                    3. 'final' keyword
+
+                        final Field or final localVariable, they end up as constants.
+
+                                public static void main(String ..a){
+                                  final String s1 = "Hello";
+
+                                  //s1 can not hold any other value than "Hello"
+
+                                  final Employee e = new Employee();
+
+                                  e.setName("Vamsy"); //it is very much possible
+
+                                  e = new Employee(); //compilaiton error as e is final   
+                                }
+
+                        final method can not be overridden
+
+                        final class can not be inhereted any more. means we can have only 0
+                        sub-classes to a final class.
 
             
             Polymorphisim           
+
+                technique of having more than one methods with the same name.
+
+
+                Overloading means when on what is being passed differs, how we do also differs.
+                    having two or more methods in the same class or in a super and sub class
+                        with the same name but different types of params or
+                        different number of params or both.
+
+                class HumanBeing {
+
+                    public Energy eat(Apple apple){
+                        Energy e = new Energy();
+                        wash(apple);
+                        Pieces[] pieces = cut(apple);
+                        for(Piece p : pieces){
+                            e.add(chewAndSwallow(p));
+                        }
+                        return e;
+                    }
+
+                    public Energy eat(IceCream ic){
+                        Energy e = new Energy();
+                        
+                        while(!ic.isEmpty()){
+                            e.add(lickAndSwallow(ic));
+                        }
+                        
+                        return e;
+                    }
+
+                    public Energy eat(Meat meat){
+                        Energy e = new Energy();
+
+                        wash(meat);
+                        coocked(meat);
+                        
+                        while(!meat.isEmpty()){
+                            e.add(biteChewAndSwallow(meat));
+                        }
+                        
+                        return e;
+                    }
+                }
+
+                Construcotr Overloading is having more than one constructor in the same class.And they
+                muyst differ in the type or number of params.
+                    default constructor             no-args
+                    paramatrized constructor        has atleast one arg
+                    copy constructor                has atleast one arg of the same class type.
             
+                Overriding is having two or more methods in a super and a sub class
+                    having the same signature but different implimentions.
+
+                class Barbarian extends HumanBeing {
+
+                    public Energy eat(Meat meat){
+                        Energy e = new Energy();
+                        
+                        while(!meat.isEmpty()){
+                            e.add(biteChewAndSwallow(meat));
+                        }
+                        
+                        return e;
+                    }
+                }
+
             Abstraction
+
+                means to hide a behaviour.
+
+                achived in java using 'abstract' keyword
+
+                abstract class 
+                        we can not instantiate an object to that class.
+
+                abstract class with abstract method
+                        an abstract method has no implementation.
+                        only abstract classes can accomidate an abstract method.
+
+                interface
+                    is a special use defined data type that can only have 
+                        1. public abstract methods
+                        2. public methods with implementation (default methods)
+                        3. public static methods with implementation
+                        4. public static final fields.
+
+                    interfaces support multiple inheretence with classes, a single
+                    class can inhereit from more than one interface
+
+
+                    Human                    Animal
+                      |- MasculineHuman         |-MaleAnimal
+                      |- FemineHuman            |-FemaleAnimal
+
+
+                    Father
+                    Brother
+                    Mother
+                    Sister
+             
+            Enums
+                    means Enumeration
+
+                    is a user defind data type that provides a list of contant objects, each
+                    representing a possible value of a field.
+
+                    enum Gender{
+                        MALE,FEMALE
+                    }
+
+                    class Employee {
+                        private int empId;
+                        private String fullName;
+                        private Gender gender;
+                    }
+
+                    e.setGender(Gender.MALE);
+                    e.setGender(Gender.FEMALE);
+
+                    1. Each constant of an enum has an index/ordinal starting from zero
+                    2. Enums can be directly converted to strings for printing ..etc.,
+                    3. .valueOf(string) method is sued to convert a string into a respective enum constant
+                    4. .values() that retuns an array of all constants in that enum
