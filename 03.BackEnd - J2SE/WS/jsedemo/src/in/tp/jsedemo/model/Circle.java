@@ -1,6 +1,6 @@
 package in.tp.jsedemo.model;
 
-public class Circle {
+public class Circle implements Shape {
 
 	private static double PI = 3.14; 
 	
@@ -20,5 +20,9 @@ public class Circle {
 	
 	public double getArea() {
 		return PI*radius*radius;
+	}
+	
+	public double getPerimeter() {
+		return 2 * PI * radius;
 	}
 }

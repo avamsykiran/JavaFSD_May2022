@@ -442,7 +442,7 @@ BackEnd - Java
                     }
                 }
 
-                Construcotr Overloading is having more than one constructor in the same class.And they
+                Constructor Overloading is having more than one constructor in the same class.And they
                 muyst differ in the type or number of params.
                     default constructor             no-args
                     paramatrized constructor        has atleast one arg
@@ -497,7 +497,10 @@ BackEnd - Java
                     Brother
                     Mother
                     Sister
-             
+            
+            When a class happens to inhereit from an abstract class or an interface, it has ot
+            override all the abstract methods.
+
             Enums
                     means Enumeration
 
@@ -521,3 +524,46 @@ BackEnd - Java
                     2. Enums can be directly converted to strings for printing ..etc.,
                     3. .valueOf(string) method is sued to convert a string into a respective enum constant
                     4. .values() that retuns an array of all constants in that enum
+
+        Java Standard Libraries
+        ---------------------------------------------------------------------------------------
+
+            java.lang               Object,System,Math
+                                    Wrapper Classes
+                                    String,StringBuilder,StringBuffer
+                                    Exception Handling
+                                    Multi-Threading
+
+            java.time               date time api
+
+            java.util               Utility Classes like Random,Scanner
+                                    Generics
+                                    Collections
+                                    Stream API and Lambda Expressions
+
+            java.io
+            java.nio                IO Streams
+
+            java.sql
+            javax.sql               JDBC
+
+        java.lang
+        ----------------------------------------------------------------------------------------
+
+            is said to be the defualt implicit package which means that this 
+            package need not be imported explicitly.
+
+            java.lang.Object        the default super class
+
+                                    int hashCode();
+                                    boolean equals(Object); 
+                                    String toString();
+
+            java.lang.System        in  : java.io.InputStream and represents the standard input (Keyboard)
+                                    out : java.io.PrintStream and represents the standard output (VDU-Monitor)
+                                    err : java.io.PrintStream and represents the standard error (VDU-Monitor)
+
+                                    void exit(int)
+
+            java.lang.Math          offers mathematical operations
+

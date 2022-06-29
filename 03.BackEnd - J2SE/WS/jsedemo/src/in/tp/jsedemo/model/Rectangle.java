@@ -1,6 +1,6 @@
 package in.tp.jsedemo.model;
 
-public class Rectangle {
+public class Rectangle implements Shape {
 	
 	private int length;
 	private int breadth;
@@ -26,11 +26,11 @@ public class Rectangle {
 		return breadth;
 	}
 
-	public int getArea() {
+	public double getArea() {
 		return length * breadth;
 	}
 
-	public int getPerimeter() {
+	public double getPerimeter() {
 		return 2 * (length + breadth);
 	}
 	
