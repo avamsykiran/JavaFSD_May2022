@@ -567,3 +567,165 @@ BackEnd - Java
 
             java.lang.Math          offers mathematical operations
 
+            Working With Strings
+
+                   + Strings are immutable 
+                   + StringBuffer and StringBuilder for manipulating Strings.
+
+            Wrapper Classes
+
+                    byte            Byte
+                    short           Short
+                    int             Integer
+                    long            Long
+                    double          Double
+                    float           Float
+                    char            Character
+                    boolean         Boolean
+                    void            Void
+
+                Boxing refers to converting a variable into wrapper object
+
+                    byte b = 22;
+                    Byte bObj = b; //auto-boxing 
+
+                UnBoxing referes to converting a wrapper object into a variable
+
+                    byte b1 = bObj; //auto-unboxing
+
+            Exception Handling
+
+                an exception is a situation while an app is is executing where it
+                encountered an unacceptable input or operation.
+
+                when ever a exception occurs the JVM wraps that info into an exception
+                obj, and the program is termianted aburptly and the exception stack-trace
+                is printed.
+
+                to handle an exception is to go for an alternate code and keep the app
+                executing normally even when an exception occurs.
+
+                java.lang.Throwable (i)
+                            |
+                            |- java.lang.Error
+                            |
+                            |- java.lang.Exception
+                                            |
+                                            |- java.lang.RuntimeException
+
+                Exception class and all of its sub-classes are called CHECKED Exceptions
+
+                RuntimeException class and all of its sub-classes are called UNCHECKED Exceptions
+
+
+                Checked exceptions must be handled using a try-catch control statement. Compiler
+                will not continue if it finds that checked excpetions are not handled. Whereas
+                Unchecked exceptions are ignored by the compiler.
+
+                    int[] nums = new int[10];
+
+                    int x = -1;
+
+                    if(x>=0 && x<nums.length) // ArrayIndexOutOfBoundsExcepiton is avoided.
+                        nums[x] = 89; 
+
+                    
+                    class EmployeeService{
+                        public void increasePay(Employee emp,double amount){
+                            if(emp!=null)   //NullPointerException is avoided
+                                emp.setSalary(emp.getSalary()+amount);
+                        }
+                    }
+
+                    empService.increasePay(null,1000);
+
+                UnchekedExceptions are expected to be avoided using defensive programing and are
+                not supposed to be handled using try..catch
+
+                Checked Exceptions can not be avoided and hence must be handled using try..catch.,
+
+                try {
+                    //that code is written which may throw an exception
+                }catch(ExceptionType1 expObj){
+                    //alternate code when the exception occurs.
+                }catch(ExceptionType2 expObj){
+                    //alternate code when the exception occurs.
+                }catch(ExceptionType3 expObj){
+                    //alternate code when the exception occurs.
+                }finally {
+                    //code that has to execute irrespective of an exception occuring or not.
+                }
+
+                try {
+                    //that code is written which may throw an exception
+                }catch(ExceptionType1 | ExceptionType2 | ExceptionType3 expObj){ //multi-catch block
+                    //alternate code when the exception occurs.
+                }finally {
+                    //code that has to execute irrespective of an exception occuring or not.
+                }
+
+                'throw' and 'throws'
+
+                    'throw' keyword is used to raise an exception programatically.
+
+                    'throws' keyword will tranfer an exception from a method to its calling method.
+
+                User Defiend Exceptions
+
+                    are classes that are developed by the developere and are inheriting
+                    Exception or RuntimeException class.
+
+                java.lang.Exception
+
+                        Exception()
+                        Exception(String message)
+                        Exception(Throwable throwable)            
+
+                        getMessage()
+                        printStackTrace()
+
+        java.time
+        ----------------------------------------------------------------------------------------
+
+        Date and Time Operations
+
+            LocalDate           .now(),.of(year,Month,day)
+            LocalDateTime       .now(),.of(year,Month,day,hour,minute,second)
+            ZonedDateTime       .now(zoneId)
+
+            Period
+            Duration
+
+            DateTimeFormatter
+
+        Generics
+        ---------------------------------------------------------------------------------------
+
+            Generic is an abstract data type or imaginary data type that is used
+            to defien the algorithm and at the tiem of execution, the data types are realized.
+
+            public class Swapper<T>{
+                public void swap(T a,T b){
+                    System.out.println("Before Swapping \t"+a+"\t"+b);
+                    T t=a;
+                    a=b;
+                    b=t;
+                    System.out.println("After Swapping \t"+a+"\t"+b);
+                }
+            }
+
+        java.util
+        ----------------------------------------------------------------------------------------
+            Scanner
+            Random
+         
+        Collections
+        ----------------------------------------------------------------------------------------
+            
+
+
+
+            
+
+
+
