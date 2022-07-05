@@ -1,6 +1,7 @@
 package in.tp.jsedemo.model;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
+	
 	private int empId;
 	private String fullName;
 	private Gender gender;
@@ -92,6 +93,11 @@ public class Employee {
 		if (gender != other.gender)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Employee o) {
+		return ((Integer)this.empId).compareTo(o.empId);
 	}
 	
 	

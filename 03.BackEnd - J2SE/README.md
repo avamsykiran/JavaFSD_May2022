@@ -722,6 +722,47 @@ BackEnd - Java
         Collections
         ----------------------------------------------------------------------------------------
             
+            Collection (i)                                          Map (i)
+                |   E add(E)                                            (Key,Value) pair
+                |   void remove(E)                                      void put(K,V)
+                |   int size()                                          v get(K)
+                |   boolean isEmpty()                                   void set(K,V)
+                |   Stream stream()                                     Set<K> keySet()
+                |   boolean contains(E)                                 boolean containsKey(K)
+                |
+            ----------------------
+            |                   |
+            Set (i)             List (i)
+                No duplicate        Duplecate elements are allowed
+                Only one null       Any number of nulls can be inserted
+                No Index            Index based operations are available
+
+                                    E get(int index)
+                                    E add(int index,E)
+                                    E first()
+                                    E last() ...etc.,
+
+
+            List implementations
+                Vector          is a growable array, thread safe
+                ArrayList       is a growable array, not thread safe
+                LinkedList      is a doubly linked list
+
+            Set implementations
+                HashSet             the retrival order is not predictable
+                LinkedHashSet       the retrival order is as same as the entry order
+                TreeSet             the retrival order is an sorted order
+
+            java.lang.Comparable                    is implemented by the smae model class whose objects must be compared
+                    int compareTo(E object)
+
+            java.util.Comparator                    is implemented by any class to compare object of any model class
+                    int compare(E obj1,E obj2)
+
+
+            Collections         has utitlity methods to work with different collection objects.
+            Arrays              has utitlity methods to work with arrays
+
 
 
 
