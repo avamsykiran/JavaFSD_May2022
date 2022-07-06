@@ -764,7 +764,31 @@ BackEnd - Java
             Arrays              has utitlity methods to work with arrays
 
 
+        Multi-Layer Archetecture
+        ---------------------------------------------------------------------------------------------------------
 
+            DAO <---model----> SERVICE <---model----> UI
+
+            DAO : Data Access Object
+                    hold all the datbase operations related code - Persistence Logic
+
+            SERVICE: hold all the validation,computation ..etc code - Bussiness Logic
+
+            UI: hold all the input output related code to interact with the user - Presentation Logic
+
+            Each layer is expected o have an interface and its implemnetation class.
+            Where the interface serves as teh abstraction between two layers.
+
+        Case Study - IncomeStatment
+        -------------------------------------------------------------------------------------------------------
+
+            Income Statement is a statement that catalogs all the earnings and spending
+            and gives the balance left.
+
+            To add/ remove/ retrive the transactions made by a user
+
+
+        
 
             
 
