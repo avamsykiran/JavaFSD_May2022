@@ -22,9 +22,6 @@ public class TxnServiceImpl implements TxnService {
 		
 		List<String> errMsgs=new ArrayList<String>();
 		
-		if(txn.getTxnId()<=0)
-			errMsgs.add("Txn Id is not expected to be zero or negative");
-		
 		if(txn.getDesp()==null || txn.getDesp().isBlank())
 			errMsgs.add("Txn Description can not be blank");
 		

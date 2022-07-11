@@ -1,8 +1,9 @@
 package in.tp.incomestatement.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Txn {
+public class Txn implements Serializable {
 
 	private long txnId;
 	private String desp;

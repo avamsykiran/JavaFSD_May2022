@@ -776,7 +776,7 @@ BackEnd - Java
 
             UI: hold all the input output related code to interact with the user - Presentation Logic
 
-            Each layer is expected o have an interface and its implemnetation class.
+            Each layer is expected to have an interface and its implemnetation class.
             Where the interface serves as teh abstraction between two layers.
 
         Case Study - IncomeStatment
@@ -787,10 +787,49 @@ BackEnd - Java
 
             To add/ remove/ retrive the transactions made by a user
 
+        IO Streams
+        ---------------------------------------------------------------------------------------------------------
+
+            Stream menas flow of data.
+
+            Working with Streams coming from or going to input output devices are handled by IO Streams.
+
+            APP <--------Input -------- Device (Keyboard/Mouse/HDD)
+            APP --------Output --------> Device (Monitor/Printer/HDD)
+
+            The Stream can carry data as bits and bytes (binary)
+
+            Binary Streams
+                APP <-----byte----------- Device
+                APP -----byte-----------> Device
+        
+            The Stream can carry data as text 
+
+            Text Streams or Character Stream
+
+                APP <-----chars----------- buffer <-----bytes----------- Device
+                APP -----chars-----------> buffer -----bytes-----------> Device
+
+
+                java.io
+                    InputStream     OutputStream                Reader                  Writer
+                        |               |-PrintStream               |-InputStreamReade      |-PrintWriter
+                        |               |-FielOutputStream          |-BuffredReader         |-FileWriter
+                        |               |-ObjectOutputStream        |-FileReader
+                        |- FileInputStream
+                        |- ObjectInputStream
+
+                    IOException
+                    FileNotFoundException
+                    File
+                    Serializable
+
+                java.nio
+                    Path
+                    Files
+
 
         
-
-            
 
 
 
