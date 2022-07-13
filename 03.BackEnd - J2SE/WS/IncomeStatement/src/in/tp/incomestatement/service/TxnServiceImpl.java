@@ -7,6 +7,7 @@ import java.util.List;
 import in.tp.incomestatement.dao.TxnDAO;
 import in.tp.incomestatement.dao.TxnDAOImpl;
 import in.tp.incomestatement.exception.InvalidTxnException;
+import in.tp.incomestatement.exception.OperationFailedException;
 import in.tp.incomestatement.model.Txn;
 import in.tp.incomestatement.model.TxnType;
 
@@ -14,7 +15,7 @@ public class TxnServiceImpl implements TxnService {
 
 	private TxnDAO txnDao;
 	
-	public TxnServiceImpl() {
+	public TxnServiceImpl() throws OperationFailedException {
 		this.txnDao=new TxnDAOImpl();
 	}
 	
@@ -42,7 +43,7 @@ public class TxnServiceImpl implements TxnService {
 	}
 	
 	@Override
-	public Txn add(Txn txn) throws InvalidTxnException {
+	public Txn add(Txn txn) throws InvalidTxnException, OperationFailedException {
 		if(txn!=null && isValid(txn)) {
 			txnDao.add(txn);
 		}
@@ -50,7 +51,7 @@ public class TxnServiceImpl implements TxnService {
 	}
 
 	@Override
-	public Txn save(Txn txn) throws InvalidTxnException {
+	public Txn save(Txn txn) throws InvalidTxnException, OperationFailedException {
 		if(txn!=null && isValid(txn)) {
 			txnDao.save(txn);
 		}
@@ -58,31 +59,31 @@ public class TxnServiceImpl implements TxnService {
 	}
 
 	@Override
-	public void deleteById(long txnId) {
+	public void deleteById(long txnId) throws OperationFailedException {
 		txnDao.deleteById(txnId);
 	}
 
 	@Override
-	public List<Txn> getAll() {
+	public List<Txn> getAll() throws OperationFailedException {
 		return txnDao.getAll();
 	}
 
 	@Override
-	public Txn getById(long txnId) {
+	public Txn getById(long txnId) throws OperationFailedException {
 		return txnDao.getById(txnId);
 	}
 
 	@Override
 	public double getTotalValue(List<Txn> txns, TxnType type) {
-		double totalValue=0;
+		/*
+		 * double totalValue=0;
+		 * 
+		 * for(Txn t : txns) { if(t.getType()==type) { totalValue+=t.getAmount(); } }
+		 * 
+		 * return totalValue;
+		 */
 		
-		for(Txn t : txns) {
-			if(t.getType()==type) {
-				totalValue+=t.getAmount();
-			}
-		}
-		
-		return totalValue;
+		return txns.stream().filter(t -> t.getType()==type).mapToDouble(t -> t.getAmount()).reduce(0, (a1,a2)->a1+a2);
 	}
 
 }

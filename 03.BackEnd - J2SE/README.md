@@ -810,7 +810,6 @@ BackEnd - Java
                 APP <-----chars----------- buffer <-----bytes----------- Device
                 APP -----chars-----------> buffer -----bytes-----------> Device
 
-
                 java.io
                     InputStream     OutputStream                Reader                  Writer
                         |               |-PrintStream               |-InputStreamReade      |-PrintWriter
@@ -827,9 +826,55 @@ BackEnd - Java
                 java.nio
                     Path
                     Files
-
-
         
+        Streams API
+        ---------------------------------------------------------------------------------------------------------
 
+            Functional Interface    is an interface that has only one abstract method.
+
+            Functional Interfcases facilate a conept called Lambda Expressions.
+
+            A Lambda Expression is a inline implementation of an interface.
+
+
+            interface MyInterface {
+                T methodName(T a);
+            }
+
+            class MyInterfaceImpl implements MyInterface {
+                public T methodName(T a){
+                    //..our implementation code
+                }
+            }
+        
+            MyInterface obj = new MyInterfaceImpl();
+            T result = obj.methodName(tValue);
+            
+            MyInterface obj2 = x -> {
+                    //..our implementation code
+            };
+            T result2 = obj2.methodName(tValue2);
+
+            java.util.function  offers a varaity of functional interfaces,
+                supplier            takes no args but return a value
+                consumers           takes params but returns nothing
+                predicates          always returns boolean
+                other functional
+
+
+            java.util.stream.Stream
+
+                Arrays.stream(array)
+                listObj.stream()
+                setObj.stream()
+
+                            .map(operator)
+                            .filter(predicate)
+
+                                            .collect(Collectors.toList())
+                                            .collect(Collectors.toSet())
+
+                                            .forEach(Consumer)
+                                            .reduce(BinaryOperator)
 
 
