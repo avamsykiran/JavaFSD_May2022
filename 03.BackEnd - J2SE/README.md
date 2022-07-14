@@ -868,13 +868,90 @@ BackEnd - Java
                 listObj.stream()
                 setObj.stream()
 
-                            .map(operator)
-                            .filter(predicate)
+                Intermidate Streams Opertors
+                            .map(operator)      returns a new Stream
+                            .filter(predicate)  returns a new Stream
 
-                                            .collect(Collectors.toList())
-                                            .collect(Collectors.toSet())
+                Terminal Stream Operators
 
-                                            .forEach(Consumer)
-                                            .reduce(BinaryOperator)
+                            .collect(Collectors.toList())   returns a list
+                            .collect(Collectors.toSet())    returns a set
+                            .forEach(Consumer)              returns nothing
+                            .reduce(BinaryOperator)         returns a single value
 
+        Maven - is a build and dependency management tool
+        --------------------------------------------------------------------------------------
 
+            'make'      predomiantly designed to work with c-language applications
+
+            'ant'       by Apache Software Foundations, is very flexible and has no project strucutre restrcitions.
+                        it had no uniform build plan or build target as a result an ant build file is everytime 
+                        new to a developer. it has no dependency management.
+
+            'mavne'     by Apache Software Foundations and has a very strict project structure and 
+                        is a build and dependency management tool.
+
+                        each maven project is uniquly identified by a combination of three thing 
+                                'group-id' and 'artifact-id' and 'version'
+                                
+                                group-id generally refers to the team or organizaton that owns the project
+                                artifact-id refers to the project name
+
+                        each maven project is described by a file called 'pom.xml'
+                        Project Object Model -
+                            1. Project meta data
+                                group-id
+                                artifact-id
+                                version
+                                description
+                                author
+                                keyword ...etc
+
+                            2. Build File Properties
+                                are local build file level variables that can be used across the build file script.
+
+                            3. Dependency List
+                                the list of thrid party project (libs) we need in our project
+
+                            4. Build Plan
+
+                        how dependecy managment is achived?
+
+                            Maven offers four levels of repositories where a maven repository is 
+                            a store of java projects (.jar)
+
+                            Maven Central Repository        https://mvnrepository.com/repos/central
+                                it is a web site that has all the .jar files published into.
+
+                            Maven Remote Repository
+                                is a proxy reposituory maintained by a software company int its private network
+                                
+                            Maven Local Repository
+                                '.m2' folder in the users folder of the developer machine
+                                all our .jars needed are downloded here and are refered in the classpath
+                                of our projects.
+
+                            Mavne Project level Repository
+                                '.jar's that are not published into maven central repo, must be
+                                obtained by other means and a copy that jar is placed in any folder say 'lib'
+                                inside our project folder.  That lib folder is called 'project level repo'.
+
+                        how the build process fucntions?
+
+                            Goals
+                                a goal is a task or a build phase
+
+                                clean
+                                compile
+                                test
+                                build
+                                ...etc
+
+                            Plugins
+
+                                is a maven executor for each of the goals.
+
+                        how to use maven?
+
+                            1. Maven is available as a tool on any IDE
+                            2. Maven can be downlaoded and used through maven CLI
