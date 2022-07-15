@@ -888,7 +888,7 @@ BackEnd - Java
                         it had no uniform build plan or build target as a result an ant build file is everytime 
                         new to a developer. it has no dependency management.
 
-            'mavne'     by Apache Software Foundations and has a very strict project structure and 
+            'maven'     by Apache Software Foundations and has a very strict project structure and 
                         is a build and dependency management tool.
 
                         each maven project is uniquly identified by a combination of three thing 
@@ -955,3 +955,62 @@ BackEnd - Java
 
                             1. Maven is available as a tool on any IDE
                             2. Maven can be downlaoded and used through maven CLI
+
+        JDBC - Java Database Connectivity
+        --------------------------------------------------------------------------------------
+
+            was designed to get our application connected with RDBMS (SQL based databases) .
+
+            JDBC is a specification.
+
+                RDBMS   <----DRIVER--->    Java APP
+            
+            Jdbc Drivers 
+                Type 1: JDBC-ODBC Bridge driver
+                Type 2: Java Native API Driver
+                Type 3: Network Drivers
+                Type 4: All Java Drivers
+
+                Oracle              <---Oracle Thin Driver----->   
+                Ms SQL SERVER       <---Ms Jet Driver---------->   <--JDBC api-->   Java APP
+                MySQL               <-MySQL Connector/J Driver->   
+
+            JDBC Api
+
+                java.sql
+
+                                Load Driver (java.lang.Class.forName("driver class name"))            
+                                            (automatized in JDBC 4.0 - JDK 5)
+                                                        |
+                                                        ↓
+                                Open a Connection - Connection con = DriverManager.getConnection(dbUrl,userId,pwd);
+
+                                        RDBMS           dbUrl/ConnectionString
+                                        Oracle          jdbc:oracle:thin:@localhost:1521:DatabaseServiceName
+                                        MySQL           jdbc:mysql://localhost:3306/databaseName
+
+                                                        |
+                                                        ↓
+                                -------------------------------------------------------------------
+                                ↓                                   |                             |
+                        Statement st = con.createStatement();       |       CallableStatement cst = con.prepareCall("");
+                                                                    |
+                                                                    ↓
+                                                    PreparedStatement pst = con.prepareStatement("sqlQuery");
+
+                        can be used to execute                      we have to use different PreparedStatmenet Objs
+                        differetn queries with a                    for different queries to bet exeucted. But we
+                        single Statement Obj                        have support for paramatrized queries.
+
+                        int executeUpdate("DML query")              int executeUpdate();
+                        boolean exeucte("DDL query")                boolean execute();
+                        ResultSet exeucteQuery("select query")      ResultSet executeQuery();
+
+                                                                    setT(paramIndex,paramValue);
+                                                                    
+                        SQLException
+                        ResultSet
+
+                                boolean next();
+                                T getT(colIndex);
+                                T getT(colLabel);
