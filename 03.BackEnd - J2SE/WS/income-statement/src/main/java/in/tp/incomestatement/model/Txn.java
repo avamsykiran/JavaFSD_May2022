@@ -2,7 +2,15 @@ package in.tp.incomestatement.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
+/*
+ CREATE TABLE txns (
+   txnid int primary key auto_increment,
+   desp varchar(150) not null,
+   amount double not null,
+   txndate date not null,
+   type varchar(16) not null
+ );
+ */
 public class Txn implements Serializable {
 
 	private long txnId;
