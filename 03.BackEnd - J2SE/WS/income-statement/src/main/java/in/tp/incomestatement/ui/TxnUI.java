@@ -3,7 +3,7 @@ package in.tp.incomestatement.ui;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Scanner;
+import java.util.function.Consumer;
 
 import in.tp.incomestatement.exception.InvalidTxnException;
 import in.tp.incomestatement.exception.OperationFailedException;
@@ -73,17 +73,26 @@ public class TxnUI {
 		if (txns == null || txns.isEmpty()) {
 			System.out.println("No records found!");
 		} else {
-			for (Txn t : txns) {
-				System.out.println(t);
-			}
-			
 			double totalCredit =txnService.getTotalValue(txns, TxnType.CREDIT);
 			double totalDebit =txnService.getTotalValue(txns, TxnType.DEBIT);
 			double balance = totalCredit-totalDebit;
 			
-			System.out.println("Totla Credit: "+totalCredit);
-			System.out.println("Totla Debit: "+totalDebit);
-			System.out.println("Balance: "+balance);
+			Consumer<Txn> a= i->{
+	            if(i.getType()==TxnType.CREDIT) {
+	                System.out.printf(i.getTxnId()+"\t"+i.getTxnDate()+"\t"+"%-15s %7.1f %n" ,i.getDesp(),i.getAmount());
+	            }
+	            else {
+	                System.out.printf(i.getTxnId()+"\t"+i.getTxnDate()+"\t"+"%-15s %21.1f %n" ,i.getDesp(),i.getAmount());
+	            }
+	        };
+	        
+	        System.out.println("TxnID \tTxnDate \tDescription \t Credit \tDebit");
+	        System.out.println("------------------------------------------------------------------------------------------------------------------------");
+	        txns.stream().forEach(a);
+	        System.out.println("------------------------------------------------------------------------------------------------------------------------");
+	        System.out.printf("Totals"+ "%41.1f %13.1f %n",totalCredit,totalDebit);
+	        System.out.println("------------------------------------------------------------------------------------------------------------------------");
+	        System.out.printf("Balance"+ " %54.1f %n",balance);
 		}
 	}
 

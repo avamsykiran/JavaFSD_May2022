@@ -6,6 +6,7 @@ import java.util.List;
 
 import in.tp.incomestatement.dao.TxnDAO;
 import in.tp.incomestatement.dao.TxnDAOJdbcImpl;
+import in.tp.incomestatement.dao.TxnDAOMongoDbImpl;
 import in.tp.incomestatement.exception.InvalidTxnException;
 import in.tp.incomestatement.exception.OperationFailedException;
 import in.tp.incomestatement.model.Txn;
@@ -17,7 +18,8 @@ public class TxnServiceImpl implements TxnService {
 	
 	public TxnServiceImpl() throws OperationFailedException {
 		//this.txnDao=new TxnDAOImpl();
-		this.txnDao=new TxnDAOJdbcImpl();
+		//this.txnDao=new TxnDAOJdbcImpl();
+		this.txnDao=new TxnDAOMongoDbImpl();
 	}
 	
 	private boolean isValid(Txn txn) throws InvalidTxnException {
