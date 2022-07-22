@@ -1014,3 +1014,68 @@ BackEnd - Java
                                 boolean next();
                                 T getT(colIndex);
                                 T getT(colLabel);
+        
+        Multi-Threading 
+        --------------------------------------------------------------------------------------
+
+           Process          is an active program.
+           Program          is a passive process.
+
+           Process Handling
+
+                on invokation, the process is allocated a processId and is queued.
+                Once picked up by the CPU, a heap, a stack and a program counter are allocated.
+                These three are called the state of the process.
+                No two processes can share of these three.
+                    Heap is used as the working memory area to hold program instructions, program variables ..etc
+                    Stack is used to keep track of the function calls and the function local variables.
+                    Program Counter isa registry that keeps track of the instruction line number being executed as of now. 
+
+            
+        A CPU is capable of multi-processsing
+        multi-processing is the responsibility of a multi-tasking operating system.
+        Throgh time-slicing a processer is given multiple processes one after the other by the
+        operating systema dn that appears as if the CPU is doing multi-processing only because
+        the time unit in a time slice is not human detectable.
+
+        Each tiem a processis paused and another process is given to the cpu, the prev'
+        process state must be saved and the next process state must be loaded, and this is called
+        context switching.
+
+        Thread          is a process that can share its heap with other threads in a thread group.
+                        and each thread will have seperate program counter and stack.
+
+        Java is by default multi-thread, each java program is a thread inside the JVM.
+
+        Runnable
+            |           public void run();      representes the job to be executed by a thread
+            |-Thread
+                        Thread();
+                        Thread(String name);
+                        Thread(Runnable runnable);
+                        Thread(String name,Runnable runnable);
+
+                        String getName();
+                        void setName(String name);
+                        int getPriority();
+                        void setPriority(int);
+
+                        void start();
+                        void join();
+
+                        static Thread currentThread();
+                        static void sleep(long);
+
+                                Thread t = new Threa(...) //instantiation
+                                        |
+                                        ↓
+                                    t.start()
+                                        ↓
+                                En-Queued - READY...  -----as and when the resocures are available->|
+                                           ↑                                                        ↓
+                                         PAUSED   <--------(sleep)------------------------ Execution(running)..
+                                                                                                    |
+                                                                                                    | once the job is done
+                                                                                                    |
+                                                                                                    ↓
+                                                                                                Termination
