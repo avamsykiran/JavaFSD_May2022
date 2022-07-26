@@ -1079,3 +1079,46 @@ BackEnd - Java
                                                                                                     |
                                                                                                     ↓
                                                                                                 Termination
+
+        Conccrency
+
+            one processing unit doing multiple tasks simultanously
+
+            T1  12 units of time
+            T2  8 units of time
+
+
+            U1  U2  U3  U4  U5  U6  U7  U8  U9  U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
+            ----------------------------------------------------------------------------------------------
+            T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T2  T2  T2  T2  T2  T2  T2  T2      sequqntial
+            T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T1  T1  T1  T1      concurrency
+
+
+            Mulktiple tasks using Runnable (tasks that wont return a value) or Callalble (tasks that can return avlaue).
+
+            Runnable and Callable are asynchronous tasks, meaning that these taks happen concurrently and
+            will not block the application flow - non-blocking units.
+
+            We will have to wait until the asynchronous taks is finished to retrive the result,
+            and that is possible using 'Future'.
+
+            The Callables return Future to be able to chekc the status of the callable and once
+            callable is complete we can retrive the vbalue from the future.
+
+            Excutors is a untility interface tha is used to create ExecutorServices.
+            Tese Executor Services can be loaded with as many tasks as we want and 
+            each task is spanbned into one or more threads from a controlled 
+            thread pool.
+
+            
+
+        Parellisim
+
+            multiple processing units doing sub-tasks of a same task parellelly.
+            it is possible only if we have multiple cores on your CPU
+
+            Java supports parallisim via - Parellel Streams and Fork/Join api.
+
+            listObj.stream()            is a sequential stream
+            listObj.parellelStream()    is a parellel stream
+
