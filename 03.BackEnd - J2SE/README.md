@@ -1032,93 +1032,134 @@ BackEnd - Java
                     Program Counter isa registry that keeps track of the instruction line number being executed as of now. 
 
             
-        A CPU is capable of multi-processsing
-        multi-processing is the responsibility of a multi-tasking operating system.
-        Throgh time-slicing a processer is given multiple processes one after the other by the
-        operating systema dn that appears as if the CPU is doing multi-processing only because
-        the time unit in a time slice is not human detectable.
+            A CPU is capable of multi-processsing
+            multi-processing is the responsibility of a multi-tasking operating system.
+            Throgh time-slicing a processer is given multiple processes one after the other by the
+            operating systema dn that appears as if the CPU is doing multi-processing only because
+            the time unit in a time slice is not human detectable.
 
-        Each tiem a processis paused and another process is given to the cpu, the prev'
-        process state must be saved and the next process state must be loaded, and this is called
-        context switching.
+            Each tiem a processis paused and another process is given to the cpu, the prev'
+            process state must be saved and the next process state must be loaded, and this is called
+            context switching.
 
-        Thread          is a process that can share its heap with other threads in a thread group.
-                        and each thread will have seperate program counter and stack.
+            Thread          is a process that can share its heap with other threads in a thread group.
+                            and each thread will have seperate program counter and stack.
 
-        Java is by default multi-thread, each java program is a thread inside the JVM.
+            Java is by default multi-thread, each java program is a thread inside the JVM.
 
-        Runnable
-            |           public void run();      representes the job to be executed by a thread
-            |-Thread
-                        Thread();
-                        Thread(String name);
-                        Thread(Runnable runnable);
-                        Thread(String name,Runnable runnable);
+            Runnable
+                |           public void run();      representes the job to be executed by a thread
+                |-Thread
+                            Thread();
+                            Thread(String name);
+                            Thread(Runnable runnable);
+                            Thread(String name,Runnable runnable);
 
-                        String getName();
-                        void setName(String name);
-                        int getPriority();
-                        void setPriority(int);
+                            String getName();
+                            void setName(String name);
+                            int getPriority();
+                            void setPriority(int);
 
-                        void start();
-                        void join();
+                            void start();
+                            void join();
 
-                        static Thread currentThread();
-                        static void sleep(long);
+                            static Thread currentThread();
+                            static void sleep(long);
 
-                                Thread t = new Threa(...) //instantiation
-                                        |
-                                        ↓
-                                    t.start()
-                                        ↓
-                                En-Queued - READY...  -----as and when the resocures are available->|
-                                           ↑                                                        ↓
-                                         PAUSED   <--------(sleep)------------------------ Execution(running)..
-                                                                                                    |
-                                                                                                    | once the job is done
-                                                                                                    |
-                                                                                                    ↓
-                                                                                                Termination
+                                    Thread t = new Threa(...) //instantiation
+                                            |
+                                            ↓
+                                        t.start()
+                                            ↓
+                                    En-Queued - READY...  -----as and when the resocures are available->|
+                                            ↑                                                        ↓
+                                            PAUSED   <--------(sleep)------------------------ Execution(running)..
+                                                                                                        |
+                                                                                                        | once the job is done
+                                                                                                        |
+                                                                                                        ↓
+                                                                                                    Termination
 
-        Conccrency
+            Conccrency
 
-            one processing unit doing multiple tasks simultanously
+                one processing unit doing multiple tasks simultanously
 
-            T1  12 units of time
-            T2  8 units of time
-
-
-            U1  U2  U3  U4  U5  U6  U7  U8  U9  U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
-            ----------------------------------------------------------------------------------------------
-            T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T2  T2  T2  T2  T2  T2  T2  T2      sequqntial
-            T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T1  T1  T1  T1      concurrency
+                T1  12 units of time
+                T2  8 units of time
 
 
-            Mulktiple tasks using Runnable (tasks that wont return a value) or Callalble (tasks that can return avlaue).
+                U1  U2  U3  U4  U5  U6  U7  U8  U9  U10 U11 U12 U13 U14 U15 U16 U17 U18 U19 U20
+                ----------------------------------------------------------------------------------------------
+                T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T1  T2  T2  T2  T2  T2  T2  T2  T2      sequqntial
+                T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T2  T1  T1  T1  T1  T1      concurrency
 
-            Runnable and Callable are asynchronous tasks, meaning that these taks happen concurrently and
-            will not block the application flow - non-blocking units.
+                Mulktiple tasks using Runnable (tasks that wont return a value) or Callalble (tasks that can return avlaue).
 
-            We will have to wait until the asynchronous taks is finished to retrive the result,
-            and that is possible using 'Future'.
+                Runnable and Callable are asynchronous tasks, meaning that these taks happen concurrently and
+                will not block the application flow - non-blocking units.
 
-            The Callables return Future to be able to chekc the status of the callable and once
-            callable is complete we can retrive the vbalue from the future.
+                We will have to wait until the asynchronous taks is finished to retrive the result,
+                and that is possible using 'Future'.
 
-            Excutors is a untility interface tha is used to create ExecutorServices.
-            Tese Executor Services can be loaded with as many tasks as we want and 
-            each task is spanbned into one or more threads from a controlled 
-            thread pool.
+                The Callables return Future to be able to chekc the status of the callable and once
+                callable is complete we can retrive the vbalue from the future.
+
+                Excutors is a untility interface tha is used to create ExecutorServices.
+                Tese Executor Services can be loaded with as many tasks as we want and 
+                each task is spanbned into one or more threads from a controlled 
+                thread pool.
+
+            Parellisim
+
+                multiple processing units doing sub-tasks of a same task parellelly.
+                it is possible only if we have multiple cores on your CPU
+
+                Java supports parallisim via - Parellel Streams and Fork/Join api.
+
+                listObj.stream()            is a sequential stream
+                listObj.parellelStream()    is a parellel stream
+
+        Testing
+        --------------------------------------------------------------------------------------
+
+            is to verify if the completed part of the product / the product is matching with the
+            required design.
+
+            Testing Methods
+                Black Box       for a given input, the expected output and the actual output must match.
+
+                White Box       is to verify if all the coding bracnhes are being executed at least once,
+                                and if all coding braches are executing exactly the expected number of times
+                                for a given input.
+                
+                Grey Box        
+                
+                Smoke Test      is based on the principal, "IF THERE's SMOKE THEN THERE's FIRE".
+
+            Testing Level
+
+                Unit Testing
+                Integrated Testing
+                System Testing
+                Quality Analysis Testing
+                User Acceptence Test
+                    Alpha Test
+                    Beta Test
+
+            JUnit 5
+                is the testing platform used most commonly for testing java products.
+                this si used for unit testing and integrated testing.
+
+                JUnit Engine
+                JUnit Runner
+                Junit Platform
+
+            Mockito
+                is sued on top of JUnit for stub testing or mocking.
+
+            hamcrest
+                is used on top Junit Platform / JUnit API for additional
+                matchers.
 
             
-
-        Parellisim
-
-            multiple processing units doing sub-tasks of a same task parellelly.
-            it is possible only if we have multiple cores on your CPU
-
-            Java supports parallisim via - Parellel Streams and Fork/Join api.
-
-            listObj.stream()            is a sequential stream
-            listObj.parellelStream()    is a parellel stream
 
