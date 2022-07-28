@@ -1146,13 +1146,28 @@ BackEnd - Java
                     Alpha Test
                     Beta Test
 
+            Test Case
+                is a collection of test methods written to test one unit of code.
+
+            Test Scenario
+                is a specific input-output-expected output of a test case.
+
+            Test Run
+                is each execution of a test case.
+
+            Test Data
+                is the croup of inputs on which the test caseses have to execute.
+
+            Test Suite
+                a group of test cases - grouped for the purpose of exeucting a time.
+            
             JUnit 5
                 is the testing platform used most commonly for testing java products.
                 this si used for unit testing and integrated testing.
 
                 JUnit Engine
                 JUnit Runner
-                Junit Platform
+                Junit Platform API 
 
             Mockito
                 is sued on top of JUnit for stub testing or mocking.
@@ -1160,6 +1175,22 @@ BackEnd - Java
             hamcrest
                 is used on top Junit Platform / JUnit API for additional
                 matchers.
+
+        JUnit 5 API
+        --------------------------------------------------------------------------------------
+
+            Assertion
+                    is a boolean situation which continues a program on receiving true and 
+                    termintes on receiving false.
+
+                    test case uses assertion in a way that if the assertion is success then the 
+                    test case is passed or else the test case is failed.
+
+            Assertions static class offers a variety of assert methods. These assert methods
+            are used as matchers to match an actual output with an expected output.
+
+            @Test           to identify that a method is a test-method.
+
 
             
 
