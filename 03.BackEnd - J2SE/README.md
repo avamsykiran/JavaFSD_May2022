@@ -1189,7 +1189,11 @@ BackEnd - Java
             Assertions static class offers a variety of assert methods. These assert methods
             are used as matchers to match an actual output with an expected output.
 
-            @Test           to identify that a method is a test-method.
+            @Test                       to identify that a method is a test-method.
+            @ParamatrizedTest           to identify that a method is a test-method.
+            @DisplayName                is used to give a readable name to a test method
+            @BeforeEach                 applied on a method that has to execute before each of the test case executes.
+            @AfterEach                  applied on a method that has to execute after each of the test case executes.
 
 
             
