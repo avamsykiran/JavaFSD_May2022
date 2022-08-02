@@ -1196,5 +1196,15 @@ BackEnd - Java
             @AfterEach                  applied on a method that has to execute after each of the test case executes.
 
 
-            
+            @Suite
 
+        Mockito
+        ----------------------------------------------------------------------------------------
+
+            is a testing library used for mock tests otherwise called 'Stub Tests'
+
+            ComponentA      -------------->> ComponentB
+
+            Testing ComponentB without supplying actual ComponentA  is 'Stub Unit Test'
+
+            Testing ComponentB with actual ComponentA  is 'Integrated Test'

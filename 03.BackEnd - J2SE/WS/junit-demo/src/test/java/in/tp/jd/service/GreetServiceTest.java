@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -68,6 +69,7 @@ public class GreetServiceTest {
 	}
 	
 	@ParameterizedTest
+	@Tag("ptest")
 	@MethodSource("provideTestDataForTestGreetUser")
 	@DisplayName("greetUSer shall return greeting for the given user")
 	void testGreetUser(User user,String expected) throws InvalidUserException {
