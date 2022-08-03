@@ -10,4 +10,5 @@ public interface UserDao {
 	User getByFullName(String fullName);
 	List<User> getAll();
 	void deleteByFullName(String fullName);
+	boolean existsByFullName(String fullName);
 }

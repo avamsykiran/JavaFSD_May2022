@@ -3,6 +3,7 @@ package in.tp.jd.service;
 import java.util.List;
 
 import in.tp.jd.dao.UserDao;
+import in.tp.jd.exception.InvalidUserException;
 import in.tp.jd.model.User;
 
 public class UserServiceImpl implements UserService{
@@ -34,7 +35,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void deleteByFullName(String fullName) {
+	public void deleteByFullName(String fullName) throws InvalidUserException {
+		if(!userDao.existsByFullName(fullName))
+			throw new InvalidUserException();
 		userDao.deleteByFullName(fullName);
 	}
 }
