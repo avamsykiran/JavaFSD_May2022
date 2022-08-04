@@ -1195,7 +1195,6 @@ BackEnd - Java
             @BeforeEach                 applied on a method that has to execute before each of the test case executes.
             @AfterEach                  applied on a method that has to execute after each of the test case executes.
 
-
             @Suite
 
         Mockito
@@ -1208,3 +1207,109 @@ BackEnd - Java
             Testing ComponentB without supplying actual ComponentA  is 'Stub Unit Test'
 
             Testing ComponentB with actual ComponentA  is 'Integrated Test'
+
+        Java Evolution 8 to 11
+        ----------------------------------------------------------------------------------------
+
+            Java 8
+                        Default and Static Methods in inerfaces
+                        Functional Interfaces and Lambda Expressions
+                        date and time api
+                        regexp
+                        java.nio package
+                        Streams API
+                        Parlellisim and Concurrency
+
+            Java 9
+                        Collections
+                            Collections got a couple of new helper methods, to easily construct Lists, Sets and Maps.
+
+                            List<String> list = List.of("one", "two", "three");
+                            Set<String> set = Set.of("one", "two", "three");
+                            Map<String, String> map = Map.of("foo", "one", "bar", "two");
+
+                        Streams
+                            Streams got a couple of additions, in the form of takeWhile,dropWhile,iterate methods.
+
+                            Stream<String> stream = Stream.iterate("", s -> s + "s")
+                                                    .takeWhile(s -> s.length() < 10);
+
+                            Stream<String> stream = Stream.iterate("", s -> s + "s")
+                                                    .dropWhile(s -> s.length() >= 10);
+                        Interfaces
+                            Interfaces got private methods:
+
+                            public interface MyInterface {
+
+                                private static void myPrivateMethod(){
+                                    System.out.println("Yay, I am private!");
+                                }
+                            }
+                        
+                        JShell
+                            Finally, Java got a shell where you can try out simple commands and get immediate results.
+                        
+                        Project Jigsaw: 
+                            Java Modules and Multi-Release Jar Files
+
+                        HttpClient
+                            as a experimental feature
+            
+            Java 10
+                        Local-Variable Type Inference: var-keyword                        
+                            String myName = "Marco"; // Pre-Java 10
+                            var myName = "Marco"; // With Java 10
+                            
+                        Run Source Files
+                            Starting with Java 10, you can run Java source files without having to compile them first. A step towards scripting.
+                            
+            Java 11
+                    Strings
+                        "Marco".isBlank();
+                        "Mar\nco".lines();
+
+                    Files
+                        Path path = Files.writeString(Files.createTempFile("helloworld", ".txt"), "Hi, my name is!");
+                        
+                        String s = Files.readString(path);
+
+                    Local-Variable Type Inference (var) for lambda parameters
+                        (var firstName, var lastName) -> firstName + lastName
+
+                    HttpClient
+                        is prmianant feature.
+
+            https://www.marcobehler.com/guides/a-guide-to-java-versions-and-features
+
+        Java Modules
+        ----------------------------------------------------------------------------------------
+
+            A Module is a group of closely related packages and resources along with a new module descriptor file.
+
+            In other words, it's a “package of Java Packages” abstraction that allows us to make our code even more reusable.
+
+            Each module is responsible for its resources, like media or configuration files.
+            Previously we'd put all resources into the root level of our project and manually manage which resources belonged to different parts of the application. With modules, we can ship required images and XML files with the module that needs it, making our projects much easier to manage.
+
+            A module includes a descriptor file that defines several aspects of our new module:
+
+            Name – the name of our module
+            Dependencies – a list of other modules that this module depends on
+            Public Packages – a list of all packages we want accessible from outside the module
+                             by default all packages are module private.
+            Services Offered – we can provide service implementations that can be consumed by other modules
+            Services Consumed – allows the current module to be a consumer of a service
+            Reflection Permissions – explicitly allows other classes to use reflection to access the private members of a package
+
+            module-info.java
+                module.name {
+                    requires name.of.the.moduel.that.the.current.module.depends.on;
+
+                    exposes package.name.that.others.module.have.access.to;
+
+                    provides GreetService with GreetServieTiemBasedImpl;
+
+                    uses AServiceFromAModule;
+
+                    opens package.name;
+                }
