@@ -91,4 +91,59 @@ JTA     java transaction api        JavaEE specifications
             ibates ...etc.,
 
 
-    
+    JPA Annotations
+
+        @Entity             class level
+        @Table(name="")     class level
+        
+        @Embedable          class level
+
+        @Inheretence            class level
+        @DiscriminatorColumn    class level
+        @DiscriminatorValue     class level
+
+        @Id                 field level
+        @GeneratedValue     field level
+
+        @Column             field level
+        @Transiant          field level
+        
+        @Enumerated         field level
+        @Embeded            field level
+
+        @OneToOne           field level
+        @OneToMany          field level
+        @ManyToOne          field level
+        @ManyToMany         field level
+
+        @JoinColumn         field level
+
+    JTA Annotations
+
+        @Transactional
+
+    JPA API
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistenceUnitName");
+        EntityManager em = emf.createEntityManger();
+
+        em.getTransaction()
+        em.persist(entity);
+        em.merge(entity);
+        em.remove(entity);
+        em.find(Entity.class,idValue);
+        em.createQuery("jpql");
+        em.createQuery("jpql",ResultantClass.class);
+        em.createNamedQuery("qryName",ResultantClass.class);
+
+    Hibernate API
+
+        SessionFactory
+            Session
+                beginTransaction();
+                save(entity);
+                merge(entity);
+                delete(entity);
+                query(entity);
+                find(Entity.class,idValue);
+                get(Entity.class,idValue);
