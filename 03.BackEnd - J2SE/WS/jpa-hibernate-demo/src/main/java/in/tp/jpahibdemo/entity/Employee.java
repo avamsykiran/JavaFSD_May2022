@@ -95,4 +95,12 @@ public class Employee implements Comparable<Employee> {
 	public int compareTo(Employee o) {
 		return this.empId==null?-1:this.empId.compareTo(o.empId);
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", fullName=" + fullName + ", salary=" + salary + ", address=" + address
+				+ "]";
+	}
+	
+	
 }
