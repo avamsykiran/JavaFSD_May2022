@@ -117,8 +117,23 @@ Spring Ioc
                 }
             }
 
-
             @Component("beanName")
+                @Service
+                @Repository
+
+            @Autowired
+                field               field injection
+                constructor         constructor injection
+                setter              setter injection
+
+                by type             
+                by name
+                    @Qualifier
+
+            @PropertySource
+            @Value
+
+            @Scope                  singleton       prototype
 
 
 
