@@ -51,3 +51,30 @@ Spring Boot
         Spring Boot Runners
             CommandLineRunner       void run(String args[])
             ApplicationRunner       void run(ApplictionArgs args)
+
+Spring Data
+---------------------------------------------------------------
+
+    is a module of spring framework intended to provide
+    data base operations support.
+
+        Spring Data JDBC
+            JdbcTemplate
+            NamedJdbcTemplate
+
+        Spring Data JPA
+
+            it is going provide dynamic repository implementation.
+
+            CrudRepository  (i)
+                |- JpaRepository (i)
+                        Optional<Entity> findById(id)
+                        List<Entity> findAll()
+                        Entity save(entity)
+                        void deleteById(id)
+                        boolean existsById(id)
+
+            public interface EmployeeRepo extends JpaRepository<Employee,Long> {
+
+            }
+
