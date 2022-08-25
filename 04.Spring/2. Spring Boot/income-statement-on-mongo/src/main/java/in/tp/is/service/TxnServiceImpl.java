@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +42,6 @@ public class TxnServiceImpl implements TxnService {
 		return errMsgs.isEmpty();
 	}
 	
-	@Transactional
 	@Override
 	public Txn add(Txn txn) throws InvalidTxnException, OperationFailedException {
 		if(txn!=null && isValid(txn)) {
@@ -53,7 +50,6 @@ public class TxnServiceImpl implements TxnService {
 		return txn;
 	}
 
-	@Transactional
 	@Override
 	public Txn save(Txn txn) throws InvalidTxnException, OperationFailedException {
 		if(txn!=null && isValid(txn)) {
@@ -67,7 +63,6 @@ public class TxnServiceImpl implements TxnService {
 		return txn;
 	}
 
-	@Transactional
 	@Override
 	public void deleteById(long txnId) throws OperationFailedException {
 		if(!txnRepo.existsById(txnId)) {
