@@ -21,33 +21,10 @@ public class TxnServiceImpl implements TxnService {
 	@Autowired
 	private TxnRepo txnRepo;
 	
-	private boolean isValid(Txn txn) throws InvalidTxnException {
-		
-		List<String> errMsgs=new ArrayList<String>();
-		
-		if(txn.getDesp()==null || txn.getDesp().isBlank())
-			errMsgs.add("Txn Description can not be blank");
-		
-		if(txn.getAmount()<0)
-			errMsgs.add("Txn amount cna not be negative");
-	
-		if(txn.getTxnDate()==null ||txn.getTxnDate().isAfter(LocalDate.now()))
-			errMsgs.add("Txn Date can not be a future date");
-		
-		if(txn.getType()==null)
-			errMsgs.add("Txn Type is a mandatory field");
-		
-		if(!errMsgs.isEmpty()) {
-			throw new InvalidTxnException(errMsgs.toString());
-		}
-		
-		return errMsgs.isEmpty();
-	}
-	
 	@Transactional
 	@Override
 	public Txn add(Txn txn) throws InvalidTxnException, OperationFailedException {
-		if(txn!=null && isValid(txn)) {
+		if(txn!=null) {
 			txnRepo.save(txn);
 		}
 		return txn;
@@ -56,7 +33,7 @@ public class TxnServiceImpl implements TxnService {
 	@Transactional
 	@Override
 	public Txn save(Txn txn) throws InvalidTxnException, OperationFailedException {
-		if(txn!=null && isValid(txn)) {
+		if(txn!=null) {
 			
 			if(!txnRepo.existsById(txn.getTxnId())) {
 				throw new OperationFailedException("No Such Txn Found");

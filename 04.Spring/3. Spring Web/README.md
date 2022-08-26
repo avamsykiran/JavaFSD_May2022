@@ -59,17 +59,15 @@ Spring Web
         How will the FrontController pick up a View for a given viewName
 
             ViewResolver
-                |-InterlResourceViewResolver
+                |-InternalResourceViewResolver
                     prefix
                     suffix
 
                     view = prefix + viewName + suffix
 
-        
-
         @Controller
         @RequestParam
+        @ModelAttribute
                         
         @RequestMApping(value="url",method=RequestMethod.GET)      @GetMapping("url")
         @RequestMApping(value="url",method=RequestMethod.POST)     @PostMapping("url")
-

@@ -11,6 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.PositiveOrZero;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name="txns")
@@ -18,13 +25,20 @@ public class Txn implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="txnid")
-	private long txnId;
+	private Long txnId;
+	@NotBlank(message = "Description can not be blank")
 	@Column(name="desp",nullable = false)
 	private String desp;
+	@NotNull(message = "Amount can not be skipped")
+	@PositiveOrZero(message = "Amount can not be negative")
 	@Column(name="amount",nullable = false)
-	private double amount;
+	private Double amount;
+	@NotNull(message = "Transaction Date can not be skipped")
+	@PastOrPresent(message = "Transaction Date can not be of future")
+	@DateTimeFormat(iso=ISO.DATE)
 	@Column(name="txndate",nullable = false)
 	private LocalDate txnDate;
+	@NotNull(message = "Transaction Type can not be skipped")
 	@Column(name="type",nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TxnType type;
@@ -33,7 +47,7 @@ public class Txn implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Txn(long txnId, String desp, double amount, LocalDate txnDate, TxnType type) {
+	public Txn(Long txnId, String desp, Double amount, LocalDate txnDate, TxnType type) {
 		super();
 		this.txnId = txnId;
 		this.desp = desp;
@@ -42,11 +56,11 @@ public class Txn implements Serializable {
 		this.type = type;
 	}
 
-	public long getTxnId() {
+	public Long getTxnId() {
 		return txnId;
 	}
 
-	public void setTxnId(long txnId) {
+	public void setTxnId(Long txnId) {
 		this.txnId = txnId;
 	}
 
@@ -58,11 +72,11 @@ public class Txn implements Serializable {
 		this.desp = desp;
 	}
 
-	public double getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
