@@ -66,5 +66,10 @@ Spring Web
                     view = prefix + viewName + suffix
 
         
-                
+
+        @Controller
+        @RequestParam
+                        
+        @RequestMApping(value="url",method=RequestMethod.GET)      @GetMapping("url")
+        @RequestMApping(value="url",method=RequestMethod.POST)     @PostMapping("url")
 
