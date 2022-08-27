@@ -7,24 +7,24 @@ Spring Web
 
     Web MVC
     
-    Model View And Controller Archetecture
-     Repo(s) <--> Service(s) <--> Controller(s)  <---------REQ--  Clinet
-                                    |                               ↑
-                                    |                               |
-                                    model                           |
-                                    |                               html
-                                    ↓                               |
-                                    View    ------RESP------------> |
-    
-    Single Front Controller 
+        Model View And Controller Archetecture
+            Repo(s) <--> Service(s) <--> Controller(s)  <---------REQ--  Clinet
+                                            |                               ↑
+                                            |                               |
+                                            model                           |
+                                            |                               html
+                                            ↓                               |
+                                            View    ------RESP------------> |
+            
+        Single Front Controller 
 
-     Repo(s) <--> Service(s) <--> Controller(s) <--> FrontController <--REQ--------  Clinet
-                                                        |                               ↑
-                                                        |                               |
-                                                        model                           |
-                                                        |                               html
-                                                        ↓                               |
-                                                        View    ------RESP------------> |
+            Repo(s) <--> Service(s) <--> Controller(s) <--> FrontController <--REQ--------  ClinetBROWSER) 
+                                                                |                               ↑
+                                                                |                               |
+                                                                model                           |
+                                                                |                               html
+                                                                ↓                               |
+                                                                View    ------RESP------------> |
 
 
         FrontController     
@@ -71,3 +71,70 @@ Spring Web
                         
         @RequestMApping(value="url",method=RequestMethod.GET)      @GetMapping("url")
         @RequestMApping(value="url",method=RequestMethod.POST)     @PostMapping("url")
+
+    REST api
+
+        is also known as RESTful WebServices.
+
+        A webservice is a centrally hosted bussiness logic to be consumed by a variaty of ui applications.
+
+
+            Persistence Tier    <------>  BackEnd       <------>    FronEnd
+
+            database <----> WebService  <-----> UI-Application
+                                                                <-----> Andriod App
+            MySQL/Oralce..etc   <------>    Java WebServices    <-----> Dynamic Web App
+                                                                <-----> Angular App
+
+            Web Services
+                SOAP Web Services
+                    These use SOAP protocol. (Simple Object Access Protocol)
+
+                    SOAP uses XML as medium of data-exchange.
+
+                    SOAP can not facilitate exchange of binary date or other complicated formats.
+                
+                RESTful Web Service / REST api
+                    these use HTTP protocol.
+
+                    On http protocol, already we can exchange a large variety of data
+                    like xml,json,binary,text,....etc.,
+
+                    REST - REpresentational State Transfer was designed.
+
+                    An End-point is a url mapped to a method (Bussiness Logic) to be invoked.
+
+                        for a given resoruces let use a single end-point with varing HTTP-METHODS
+
+                        To Work with Employees
+                                                                 http-status
+                                                                                     FAILUE
+                    operation   end-point   http-method     SUCESS          ClientSide      ServerSide
+                    ------------------------------------------------------------------------------------
+                    CREATE      /emps       POST            201-CREATED     400-BAD REQUEST 500-INTERNAL SERVER ERROR
+                    RETRIVE     /emps       GET             200-OK          404-NOT FOUND   500-INTERNAL SERVER ERROR
+                    UPDATE      /emps       PUT             204-ACCEPTED    400-BAD REQUEST 500-INTERNAL SERVER ERROR
+                    DELETE      /emps       DELETE          203-NO CONTENT  404-NOT FOUND   500-INTERNAL SERVER ERROR
+
+
+                    Rest Clients are softwares used to check the working of a RESTful webservice.
+                        PostMan
+                        Insomnia
+                        ...etc.,
+
+                    Single Front Controller for REST api
+                                                                                        (AndrioApp/AngualrApp/ReactJSAPP)
+            Repo(s) <--> Service(s) <--> Controller(s) <--> FrontController <--REQ--------  Clinet 
+                                                                |                               ↑
+                                                                |                               | .json/.xml
+                                                                model  ------RESP-------------> |
+
+                    @RestController =   @Controller + @ResponseBody
+
+                    @RequestMapping(url,http-method)                    
+                        @GetMapping(url)
+                        @PutMapping(url)
+                        @PostMapping(url)
+                        @DeleteMapping(url)
+
+                    ResponseEntity  resp = new ResponseEntity(respBody,httpStatus);
