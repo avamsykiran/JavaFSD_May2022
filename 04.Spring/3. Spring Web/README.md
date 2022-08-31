@@ -138,3 +138,70 @@ Spring Web
                         @DeleteMapping(url)
 
                     ResponseEntity  resp = new ResponseEntity(respBody,httpStatus);
+    
+    Spring Boot Dev Tools
+
+        https://www.baeldung.com/spring-boot-devtools
+
+        it is a moduel provided by spring framework to compliment the spring boot,
+        by throwing a deveplopment time capabilities. Its features are
+
+            Property Defaults
+            Auto Restart
+            Live Reload
+            Remote Debugging
+            Global Properties
+
+            Property Defaults
+                Spring boot bring a lot of auto-configuaration like for-example
+                caching. it brings data caching, template caching ..etc.,
+                But this caching feature is not encouriging at dev-time as we 
+                have to see the changes from time to time. Thus this caching is 
+                autoamtically desabled by DevTools.
+
+            Auto Restart
+                DevTools plants a monitor on the source code and as and when the
+                source code is modified and saved, it trggers recompilation, packaging and
+                hosting on the server and the server is auto-restarted.
+
+            Live Reload
+                DevTools has a relaod server that can trigger the browser to automatically
+                reload as and when the web server restarts. And to make use of this
+                the browser must install the relevant plugin.
+
+    Swagger
+
+        is rest api documentation tool.
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        @Bean
+        public Docket api() {
+            return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
+                    .paths(PathSelectors.any()).build();
+        }
+
+        the documentation can be accessed through context-root/v2/api-docs
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        the documentation-ui can be accessed through context-root/swagger-ui/
+
+    Sprinbg boot Actuator
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        management.endpoints.web.exposure.include=*
+
+        the actuator can be accessed through context-root/actuator/relevant-end-points
