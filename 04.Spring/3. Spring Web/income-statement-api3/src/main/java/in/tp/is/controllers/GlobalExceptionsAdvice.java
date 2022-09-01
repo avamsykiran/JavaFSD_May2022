@@ -5,13 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import in.tp.is.exceptions.InvalidAccountHolderException;
 import in.tp.is.exceptions.InvalidTxnException;
 import in.tp.is.exceptions.OperationFailedException;
 
 @RestControllerAdvice
 public class GlobalExceptionsAdvice {
 
-	@ExceptionHandler({InvalidTxnException.class,OperationFailedException.class})
+	@ExceptionHandler({InvalidTxnException.class,InvalidAccountHolderException.class,OperationFailedException.class})
 	public ResponseEntity<String> handleUserDefiendException(Throwable err){
 		return new ResponseEntity<String>(err.getMessage(), HttpStatus.BAD_REQUEST);
 	}

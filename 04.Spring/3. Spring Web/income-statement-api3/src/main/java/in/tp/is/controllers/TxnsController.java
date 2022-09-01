@@ -29,9 +29,9 @@ public class TxnsController {
 	@Autowired
 	private TxnService txnService;
 	
-	@GetMapping
-	public ResponseEntity<List<Txn>> sendTxns() throws OperationFailedException {
-		return new ResponseEntity<List<Txn>>(txnService.getAll(), HttpStatus.OK);
+	@GetMapping("/byAccount/{ahId}")
+	public ResponseEntity<List<Txn>> sendTxns(@PathVariable("ahId")Long ahId) throws OperationFailedException {
+		return new ResponseEntity<>(txnService.getAllByHolder(ahId), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
