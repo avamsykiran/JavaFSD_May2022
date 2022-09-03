@@ -205,3 +205,8 @@ Spring Web
         management.endpoints.web.exposure.include=*
 
         the actuator can be accessed through context-root/actuator/relevant-end-points
+
+    Spring Boot Test
+
+        is a sub-module provided by spring boot module of spring framework and provides
+        the testing platform for with all neccssary inclusions like mockito and hamcrest.
