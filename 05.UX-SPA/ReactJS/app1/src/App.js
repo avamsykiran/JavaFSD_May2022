@@ -1,4 +1,6 @@
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
+import Arth from './components/Arth';
+import Header from './components/Header';
 
 class App extends Component{
   constructor(props){
@@ -11,19 +13,14 @@ class App extends Component{
   }
 
   render(){
+
     let {title,tagLine,authors} = this.state;
 
     return (
-      <header>
-        <h3>
-          {title} <br />
-          <small>{tagLine}</small>
-        </h3>
-        <h4>Team</h4>
-        <ol>
-          {authors.map(a => (<li>{a}</li>))}
-        </ol>
-      </header>
+      <Fragment>
+        <Header appTitle={title} appTag={tagLine} builders={authors} />
+        <Arth />
+      </Fragment>
     );
   }
 }

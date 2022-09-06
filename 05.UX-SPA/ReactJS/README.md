@@ -105,7 +105,7 @@ ReactJS
 
             template    is teh html dom to be rendered for this component.
 
-            props       is short for properties , each of whihc represents an attribute
+            props       is short for properties , each of which represents an attribute
                         for the component tag. These attributes can be used to share data
                         across components.
 
@@ -166,6 +166,42 @@ ReactJS
                         </ol>
                     );
 
+                JSX Rules
+                    1. html elements are always lower cased. 
+                        <header>
+                        </header>
+                    2. React Components are Init-Capitalized.
+                        <Header>
+                        </Header>
+                    3. 'class' attribute is not allowed, 'className' is to be used instaed.
+
         Function Components
+
+            is a javascript function that accepts the props and returns a singleJSXElement.
+            these are also known as state-less components.
+
+            const MyComponent2 = props => (singleJSXElement);
+
         High Order Components
 
+            is a javascript function that accepts a component and returns a component.
+
+            const hoc1 = component1 => component2;
+
+    ReactJS Component state
+    --------------------------------------------------
+
+        'state' is a field in Component class.
+        'state' is initialized in the component constructor.
+
+        'state' is always monitored by an observer and each time the state changes,
+        the 'render()' is invoked to update the DOM.
+
+        'state' is immutable. The 'state' is expected to be replaced always using
+        'setState' method.
+
+        'setState(partialStateObj)' is not expected to be called in 'render()'.
+
+        
+    ReactJS Shadow DOM / Virtuial DOM
+    ---------------------------------------------------
