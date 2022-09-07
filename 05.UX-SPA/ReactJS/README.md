@@ -205,3 +205,37 @@ ReactJS
         
     ReactJS Shadow DOM / Virtuial DOM
     ---------------------------------------------------
+
+        DOM is the tree representation of an html document.
+        each element of the html document happens to be a node in the DOM tree.
+        using javascript one can remove a node or create a new node and add it to the tree, and
+        se call that as DOM manipulation.
+
+        Now as React has to generate and modify the DOM everytime the state changes, it is
+        a very time taking and heavy task. Particualrly when arrays are involved. This comes
+        to be a performence dragging issue, because the DOM tree has to be modified and
+        the ui on the browser must be corrected accordingly.
+
+        React is going to maintain a parellel copy of the actual DOM called shadow DOM or
+        virutal dom. now when ever the state changes the shadow DOM is regenerated, as it is
+        not linked with browser ui directly it is slightly easier to modify.
+
+        Once shadow is generated, it is compared with the actual DOM,
+        node by node and only those nodes missing in the Shadow DOM are
+        removed from actual DOM and those nodes missing in the actual DOM
+        are added to it. And the nodes that are not matching are updated
+        in the actual DOM.
+
+        To make the coparision easier , partiucularly in case of arrays,
+        each element is given a unique identification called 'key'.
+
+    Integrating Bootstrap with React
+    -----------------------------------------------------------------
+
+        npm install bootstrap --save
+
+        import its .css and .js into our index.js file.
+
+    
+
+

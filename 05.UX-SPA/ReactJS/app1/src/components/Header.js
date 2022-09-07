@@ -7,7 +7,7 @@ const Header = ({appTitle,appTag,builders}) => (
         </h3>
         <h4>Team</h4>
         <ol>
-            {builders.map(a => (<li>{a}</li>))}
+            {builders.map(a => (<li key={a}>{a}</li>))}
         </ol>
     </header>
 );
