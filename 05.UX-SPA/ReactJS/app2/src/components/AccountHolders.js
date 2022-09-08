@@ -13,6 +13,14 @@ class AccountHolders extends Component {
         }
     }
 
+    del = ahId => {
+        if(window.confirm(`Are you sure of deleting account holder # ${ahId}?`)){
+            let orgAhs = this.state.ahs;
+            let filteredAhs = orgAhs.filter(a => a.ahId!=ahId);
+            this.setState({ahs:filteredAhs })
+        }
+    }
+
     render(){
         let {ahs} = this.state;
 
@@ -35,6 +43,7 @@ class AccountHolders extends Component {
                                 <th>Mail Id</th>
                                 <th>Mobile</th>
                                 <th>Balance</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +55,12 @@ class AccountHolders extends Component {
                                         <td>{ah.mailId}</td>
                                         <td>{ah.mobile}</td>
                                         <td>{ah.currentBalance}</td>
+                                        <td>
+                                            <button className='btn btn-sm btn-danger' 
+                                                    onClick={e => this.del(ah.ahId)}>
+                                                        DELETE
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))
                             }
