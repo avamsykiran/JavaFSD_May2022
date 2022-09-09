@@ -237,5 +237,20 @@ ReactJS
         import its .css and .js into our index.js file.
 
     
+    ReactJS Forms
+    -----------------------------------------------------------------
 
+        Controlled Component
+            html elements and component state will have a single source of truth
+
+            the data in the html element is monitored and controlled directly by component
+            state.
+
+        UnControlled Component
+            html elements will have their own source.
+
+            compoentn state and html elements values are not bound.
+
+            the html form elements can be accessed whenever needed in the component
+            through 'ref's. Where each ref is a reference variable an html eleemnt.
 

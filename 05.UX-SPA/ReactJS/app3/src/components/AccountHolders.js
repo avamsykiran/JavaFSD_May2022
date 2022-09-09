@@ -17,7 +17,7 @@ class AccountHolders extends Component {
 
     add = ah => {
         let orgAhs = this.state.ahs;
-        let modifiedAhs = [...orgAhs,ah];
+        let modifiedAhs = [...orgAhs, ah];
         this.setState({ ahs: modifiedAhs });
     }
 
@@ -27,6 +27,18 @@ class AccountHolders extends Component {
             let filteredAhs = orgAhs.filter(a => a.ahId != ahId);
             this.setState({ ahs: filteredAhs })
         }
+    }
+
+    makeEditable = ahId => {
+        this.setState({ ahs: this.state.ahs.map(ah => ah.ahId === ahId ? { ...ah, isEditable: true } : ah) });
+    }
+
+    cancelEditable = ahId => {
+        this.setState({ ahs: this.state.ahs.map(ah => ah.ahId === ahId ? { ...ah, isEditable: undefined } : ah) });
+    }
+
+    update = ahToBeSaved => {
+        this.setState({ ahs: this.state.ahs.map(ah => ah.ahId === ahToBeSaved.ahId ? { ...ahToBeSaved, isEditable: undefined } : ah) });
     }
 
     render() {
@@ -57,7 +69,17 @@ class AccountHolders extends Component {
                         <tbody>
                             <AhForm add={this.add} />
                             {
-                                ahs.map(ah => <AhRow ah={ah} key={ah.ahId} del={this.del} />)
+                                ahs.map(
+                                    ah => ah.isEditable ?
+                                        <AhForm ah={ah}
+                                            key={ah.ahId}
+                                            update={this.update}
+                                            cancelEditable={this.cancelEditable} /> :
+                                        <AhRow ah={ah}
+                                            key={ah.ahId}
+                                            del={this.del}
+                                            makeEditable={this.makeEditable} />
+                                )
                             }
                         </tbody>
                     </table>
