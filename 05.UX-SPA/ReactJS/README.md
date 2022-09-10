@@ -254,3 +254,81 @@ ReactJS
             the html form elements can be accessed whenever needed in the component
             through 'ref's. Where each ref is a reference variable an html eleemnt.
 
+    Component LifeCycle Methods - (Class Components)
+    ----------------------------------------------------------------
+
+    constructor()
+     |
+     ↓
+    render()
+     |
+     ↓
+    componentDidMount()
+            |
+            ↓
+        /**********************************************************
+         as along the regular user interaction if any event occurs
+            invoking any event handling that again invoking
+            'setState'
+        ************************************************************/
+        |                                               ↑
+        ↓                                               |
+        render()                                        |
+        |                                               |
+        ↓                                               |
+        componentDidupdate() ---------------------------|
+                                |
+                                ↓
+        /* ***********************************************
+            the above repeats until the component is unmounted
+            and jsut before the unmounting...
+        **************************************************/
+                                |
+                                ↓
+                    componentWillUnmount()
+
+    React Hooks
+    -------------------------------------------------------------------
+
+        A reac hook is a function provided react api to empower
+        functional components on par with class components.
+
+        as we know functional component are state-less, and
+        functional components have no access to life-cycle methods.
+
+        useState            is a hook that provides state for a functional component
+
+                            returns a reader and writer for each field.
+                            the reader is used to read the value of the field and
+                            writer is used to update the value of the field. The
+                            entier component function re-executes each tiem the writer is invoked.
+
+                let [field,setField] = useState(initalValue);
+
+        useEffect           is a hook that provides componentDidMount and componentDidUpadate
+
+            useEffect(callBack)
+            useEffect(callBack,[])
+            useEffect(callBack,[field1,field2,....])
+
+                            useEffect takes the callBack method to be executed
+                            as componentDidMount or componentDidUpdate. it also
+                            takes an array as second arg and is called dependencies.
+
+                            when dependencies is absent the callBack
+                            is equal to componentDidUpdate and componentDidMount,
+                            as a result it gets executed for the first time befor rendering
+                            after every tiem the render happens.
+
+                            when dependencies is empty the callBack
+                            is equal to componentDidMount,
+                            as a result it gets executed for the first time befor rendering
+                            
+                            when dependencies is not absent and not empty the callBack
+                            is equal to componentDidUpdate with a condition
+                            as a result it gets executed after every render provided
+                            the value of any field in the dependency array changes.
+
+                            useEffect cna be used as many number of tiem as we want
+                            in a component.
+
