@@ -329,6 +329,20 @@ ReactJS
                             as a result it gets executed after every render provided
                             the value of any field in the dependency array changes.
 
-                            useEffect cna be used as many number of tiem as we want
+                            useEffect cna be used as many number of time as we want
                             in a component.
 
+    AXIOS
+    ------------------------------------------------------
+
+        Ayschronous XML Input Output System
+
+        is a library used to send and recive data from web-services
+
+        axios.get(url)               returns Promise
+        axios.post(url,reqBody)      returns Promise
+        axios.put(url,reqBody)       returns Promise
+        axios.delete(url)            returns Promise
+
+        npm install axios --save
+        
