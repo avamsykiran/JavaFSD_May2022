@@ -1,5 +1,5 @@
 
-const AhRow = ({ ah, del,makeEditable }) => (
+const AhRow = ({ ah, makeEditable }) => (
     <tr>
         <td>{ah.ahId}</td>
         <td>{ah.fullName}</td>
@@ -10,10 +10,6 @@ const AhRow = ({ ah, del,makeEditable }) => (
             <button className='btn btn-sm btn-secondary'
                 onClick={e => makeEditable(ah.ahId)}>
                 EDIT
-            </button>
-            <button className='btn btn-sm btn-danger'
-                onClick={e => del(ah.ahId)}>
-                DELETE
             </button>
         </td>
     </tr>

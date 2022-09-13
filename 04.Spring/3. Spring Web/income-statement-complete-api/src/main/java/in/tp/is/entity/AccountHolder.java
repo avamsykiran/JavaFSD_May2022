@@ -23,7 +23,7 @@ public class AccountHolder {
 	@Size(min=4,max=50,message = "full name is expected to be between 4 and 50 in length")
 	private String fullName;
 	@NotBlank(message="mobile number can not be left blank")
-	@Pattern(regexp = "[1-9][0-9] {9}",message = "mobile number is a 10 digit number starting with a non-zero")
+	@Pattern(regexp = "[1-9][0-9]{9}",message = "mobile number is a 10 digit number starting with a non-zero")
 	private String mobile;
 	@NotBlank(message="mail id can not be left blank")
 	@Email(message="expecting a valid mail id")
@@ -134,6 +134,12 @@ public class AccountHolder {
 		} else if (!mobile.equals(other.mobile))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "AccountHolder [ahId=" + ahId + ", fullName=" + fullName + ", mobile=" + mobile + ", mailId=" + mailId
+				+ ", currentBalance=" + currentBalance + "]";
 	}
 	
 	

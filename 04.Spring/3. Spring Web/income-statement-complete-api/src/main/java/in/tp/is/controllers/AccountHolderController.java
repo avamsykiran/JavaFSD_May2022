@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import in.tp.is.exceptions.OperationFailedException;
 import in.tp.is.service.AccountHolderService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/accounts")
 public class AccountHolderController {
 
@@ -67,7 +69,7 @@ public class AccountHolderController {
 		
 		if(bindingResult.hasErrors()) {
 			throw new InvalidAccountHolderException(bindingResult.getAllErrors().stream().
-					map(e->e.getDefaultMessage()).reduce((m1,m2)->m1+","+m2).orElse(""));
+					map(e->e.getDefaultMessage()).reduce((m1,m2)->m1+","+m2).orElse("") + "\n" + ah.toString());
 		}
 		
 		return new ResponseEntity<>(ahService.save(ah),HttpStatus.CREATED);
