@@ -346,3 +346,74 @@ ReactJS
 
         npm install axios --save
         
+    Centralizewd State Management - redux
+    --------------------------------------------------------------------------
+
+        redux is a state management library used a variety of SPA frameworks.
+
+        react-redxu is a intergration libary to integrate redux with react.
+
+        npm install redux react-redux --save
+
+        redux
+            store       an app ideally has one and only store
+                        and a store holds all the state.
+
+            reducer     is a pure function that manages the store or
+                        that operates on the store or that modifies
+                        the state in the store
+
+                        const reducer = (oldState,action) => {
+                            //...code to tranform oldState into modifiedState
+                            return modifiedState;
+                        }
+
+            action      is an object that guides the reducer of what operation needs to be done
+                        on the state.
+
+                        { type:'',payload:any }
+
+                        type        indicates the operation like add/delete/update....etc
+                        payload     carries data needed for the operation
+
+            createStore used to create a store.
+
+        react-redux (also known as connect library)
+            
+            Provider    is a in-built component used wrap a store around the 
+                        top-level component of our app.
+
+                        const myStore = createStore(myReducer);
+
+                        <Provider store={myStore}>
+                            <App />
+                        </Provider>
+
+            dispatch    is a method used by a component to send an action to
+                        a reducer.
+
+            connect     is a method that returns a high order component.
+
+                        const hoc = connect(mapStateToProps,mapDispatchToProps);
+                        const modifiedComponent = hoc(MyComponent);
+
+                        mapStateToProps     is a function that is used to
+                                            retrive a portion of the state
+                                            and provide it as props to
+                                            the component
+
+                        mapDispatchToProps  is a function that is used to
+                                            map dispatch calls of needed actions
+                                            to the props of a component.
+
+            store   ----------- mapStateToProps ---------
+             ↑  |                                       ↓            
+             |  |                                   Component1      
+             |  |                                       |
+             |  |                                       |
+             |  |                                       |
+             |  |                                   dispatch(action) via mapDispatchToProps
+             |  |------(old state)--|                   |
+             |                      ↓                   |
+             |-(modified state)--reducer←----(action)---|
+            
