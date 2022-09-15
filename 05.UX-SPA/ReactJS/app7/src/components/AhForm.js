@@ -1,5 +1,7 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import AccountHolder from '../models/AccountHolder';
+import { connect } from 'react-redux';
+import { createAddAhAction,createUpdateAhAction,createUnMarkEditAhAction } from '../stateManagement/ahReducer';
 
 const AhForm = ({ ah, update, add, cancelEditable }) => {
 
@@ -55,4 +57,13 @@ const AhForm = ({ ah, update, add, cancelEditable }) => {
     );
 }
 
-export default AhForm;
+
+const mapStateToProps =null;
+const mapDispatchToProps = dispatch => ({
+    update: ah => dispatch(createUpdateAhAction(ah)), 
+    add: ah => dispatch(createAddAhAction(ah)), 
+    cancelEditable: ahId => dispatch(createUnMarkEditAhAction(ahId))
+});
+
+const hoc = connect(mapStateToProps, mapDispatchToProps);
+export default hoc(AhForm);

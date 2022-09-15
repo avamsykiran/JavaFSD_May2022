@@ -1,3 +1,5 @@
+import {connect} from 'react-redux';
+import {createDeleteAhAction,createMarkEditAhAction} from '../stateManagement/ahReducer';
 
 const AhRow = ({ ah, del,makeEditable }) => (
     <tr>
@@ -19,4 +21,11 @@ const AhRow = ({ ah, del,makeEditable }) => (
     </tr>
 );
 
-export default AhRow;
+const mapStateToProps =null;
+const mapDispatchToProps = dispatch => ({
+    del: ahId => dispatch(createDeleteAhAction(ahId)),
+    makeEditable: ahId => dispatch(createMarkEditAhAction(ahId))
+});
+
+const hoc = connect(mapStateToProps, mapDispatchToProps);
+export default hoc(AhRow);
