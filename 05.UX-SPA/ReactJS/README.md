@@ -406,14 +406,50 @@ ReactJS
                                             map dispatch calls of needed actions
                                             to the props of a component.
 
+                        useSelector         is a hook used instead of mapStateToProps
+                        useDispatch         is a hook that returns 'dispatch' method.
+
+                                 useSelector / 
             store   ----------- mapStateToProps ---------
              ↑  |                                       ↓            
              |  |                                   Component1      
              |  |                                       |
              |  |                                       |
              |  |                                       |
-             |  |                                   dispatch(action) via mapDispatchToProps
+             |  |                                   dispatch(action) via mapDispatchToProps / useDispatch
              |  |------(old state)--|                   |
              |                      ↓                   |
              |-(modified state)--reducer←----(action)---|
             
+    redux-thunk (a middle ware used to integrate axios with redux)
+    ----------------------------------------------------------------------
+
+        thunk means a function that returns another function.
+
+        When we use redux-thunk as a middleware between redux and react app,
+            it provides a possibility that an action can be an object or a function.
+
+            and when action is a fucntion then it houses async calls.
+
+            store   ----------- useSelector -------------------------------------
+             ↑  |                                       ↓                       ↓            
+             |  |                                   Component1                Component2
+             |  |                                       |                       |
+             |  |                                       |                       |
+             |  |                                       |                       |
+             |  |                                   dispatch(actionObj)     dispatch(actionFunction)
+             |  |                                   via useDispatch           via useDisptach
+             |  |------(old state)--|                   |                       |
+             |                      ↓                   |                   --------actionFunction-------------------
+             |-(modified state)--reducer←|-(actionObj)--|                   |                                       |       
+                                         |-(waitActionObj)←-----------------| dispatch a waitActionObj              |
+                                         |                                  | axios calls are made                  |
+                                         |                                  |  we will get                          |
+                                         |-(dataActionObj)←-----------------|   either data, dispatch dataActionObj |
+                                         |-(errActionObj) ←-----------------|   or err, dispatch errActionObj       |
+                                                                            |                                       |
+                                                                            -----------------------------------------
+            
+            applyMiddleWare function is used to apply 'thunk' on the store.
+
+
