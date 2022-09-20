@@ -453,3 +453,53 @@ ReactJS
             applyMiddleWare function is used to apply 'thunk' on the store.
 
 
+    Routing
+    ----------------------------------------------------------------------
+
+    npm install react-router-dom --save
+
+         react-router-dom v5
+
+                    <Link to="targetPath"> Link Text </Link>
+
+                    <BrowserRouter>
+                        <Component1 />
+                        <Component2 />  //will appear as common page layout
+
+                        <Route path="/home" component="C4" />
+                        <Route path="/about" component="C5" />
+                        <Route path="/contact" component="C6" />
+
+                    </BrowserRouter>
+
+                    <BrowserRouter>
+                        <Component1 />
+                        <Component2 />  //will appear as common page layout
+
+                        <Switch>
+                            <Route path="/" exact component="C3" />
+                            <Route path="/home" component="C4" />
+                            <Route path="/about" component="C5" />
+                            <Route path="/contact" component="C6" />
+                        </Switch>
+                    </BrowserRouter>
+                    
+                    <Redirect to="targetUrl" />
+
+            react-router-dom v6
+
+                            <Link to="targetPath"> Link Text </Link>
+
+                            <BrowserRouter>
+                                <Component1 />
+                                <Component2 />  //will appear as common page layout
+
+                                <Routes>
+                                    <Route path="/" element="C3" />
+                                    <Route path="/home" element="C4" />
+                                    <Route path="/about" element="C5" />
+                                    <Route path="/contact" element="C6" />
+                                </Routes>
+                            </BrowserRouter>
+                            
+                            <Redirect to="targetUrl" />    
