@@ -1,4 +1,3 @@
-import AccountHolder from '../models/AccountHolder';
 import AhForm from './AhForm';
 import AhRow from './AhRow';
 
@@ -9,9 +8,9 @@ import { createLoadAhsActionThunk} from '../stateManagement/ahReducer'
 const AccountHolders = () => {
 
     const dispatch = useDispatch();
-    let ahs = useSelector(state => state.ahs);
-    let shallWait = useSelector(state => state.shallWait);
-    let errMsg = useSelector(state => state.errMsg);
+    let ahs = useSelector(state => state.ahsState.ahs);
+    let shallWait = useSelector(state => state.ahsState.shallWait);
+    let errMsg = useSelector(state => state.ahsState.errMsg);
     useEffect(() => dispatch(createLoadAhsActionThunk()), []);
 
     return (

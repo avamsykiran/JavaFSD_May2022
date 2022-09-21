@@ -1,3 +1,4 @@
+import {Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createMarkEditAhAction } from '../stateManagement/ahReducer';
 
@@ -17,6 +18,7 @@ const AhRow = ({ ah }) => {
                     onClick={e => dispatch(createMarkEditAhAction(ah.ahId))}>
                     EDIT
                 </button>
+                <Link to={`/txns/${ah.ahId}`} className='btn btn-sm btn-info'>STATEMENT</Link>
             </td>
         </tr>
     );

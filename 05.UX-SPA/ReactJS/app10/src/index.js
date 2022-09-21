@@ -8,13 +8,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import ahReducer from './ahs/stateManagement/ahReducer';
-import { createStore,applyMiddleware } from 'redux';
+import txnReducer from './txns/stateManagement/txnReducer';
+import { createStore,applyMiddleware,combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const incomeStatementStore = createStore(ahReducer,applyMiddleware(thunk));
+const rootReducer = combineReducers({ahsState:ahReducer,txnsState:txnReducer})
+const incomeStatementStore = createStore(rootReducer,applyMiddleware(thunk));
 
 root.render(
   <React.StrictMode>

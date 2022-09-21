@@ -30,7 +30,7 @@ const AhForm = ({ ah }) => {
     return (
         <tr>
             <td>
-                <input type="number" name="ahId" value={myAh.ahId} className="form-control" onChange={updateData} />
+                {myAh.ahId}
             </td>
             <td>
                 <input type="text" name="fullName" value={myAh.fullName} className="form-control" onChange={updateData} />

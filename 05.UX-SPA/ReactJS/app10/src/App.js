@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AccountHolders from './ahs/components/AccountHolders';
 import Header from './components/Header';
 import Home from './components/Home';
+import Txns from './txns/components/Txns';
 
 const App = props => (
   <Router>
@@ -11,6 +12,7 @@ const App = props => (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/ahs' element={<AccountHolders />} />
+      <Route path='/txns/:ahId' element={<Txns />} />
     </Routes>
   </Router>
 );
