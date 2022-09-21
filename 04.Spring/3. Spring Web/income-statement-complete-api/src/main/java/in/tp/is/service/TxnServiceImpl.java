@@ -44,7 +44,7 @@ public class TxnServiceImpl implements TxnService {
 	@Transactional
 	@Override
 	public Txn save(Txn txn) throws InvalidTxnException, OperationFailedException {
-		if (txn != null || !txnRepo.existsById(txn.getTxnId())) {
+		if (txn == null || !txnRepo.existsById(txn.getTxnId())) {
 			throw new OperationFailedException("No Such Txn Found");
 		}
 		Txn oldTxn = getById(txn.getTxnId());

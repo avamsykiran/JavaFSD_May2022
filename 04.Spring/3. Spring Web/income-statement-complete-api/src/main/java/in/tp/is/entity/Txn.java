@@ -20,6 +20,7 @@ import javax.validation.constraints.PositiveOrZero;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -39,7 +40,8 @@ public class Txn implements Serializable {
 	private Double amount;
 	@NotNull(message = "Transaction Date can not be skipped")
 	@PastOrPresent(message = "Transaction Date can not be of future")
-	@DateTimeFormat(iso=ISO.DATE)
+	@DateTimeFormat(iso = ISO.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name="txndate",nullable = false)
 	private LocalDate txnDate;
 	@NotNull(message = "Transaction Type can not be skipped")
