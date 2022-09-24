@@ -64,18 +64,37 @@ Angular Archetecture
 
         }
 
+        declarations:[]     a list of components,directives and pipes that belong to this module
+        imports:[],         a list of other modules to be imported into this module
+        exports:[],         a list of components,directives and pipes that belong to this module and to be used outside
+        providers:[],       a list of services that belong to this module
+        bootstrap:[]        a list of components that are to be instatianted immediatly after loading this module
+
+        'bootstrap' is found only in the ROOT MODULE, 'exports' is not found in the ROOT MODULE.
+
     Directive
         Component Directive / Component
+
+            is a angular built html element.
+
+            Component   =  Component Class + Template
+                
+                Component Class holds the state and behaviour as field and methods respectivly.
+                Template is the DOM the component has to render.
+
             @Component({
                 selector:'',
                 templateUrl:'',
-                styleSheets:[]
+                styleUrls:[]
             })
             class MyComponent {
 
             }
 
         Attribute Directive
+
+            is a angular built html attribute.
+
             @Directive({
                 selector:''
             }) 
@@ -100,3 +119,23 @@ Angular Archetecture
 
         }
 
+Data Binding
+------------------------------------------------------------------
+
+    Interpolation
+
+        {{angular-expression}}
+
+    Two-Way Data Binding
+
+        is used to bind a field with a html form element.
+
+        'ngModel' attribute directive from 'FormsModule' is used here
+
+        <input [(ngModel)]="field" />
+
+    One-Way Data Binding
+        Attribute Binding
+        Style Binding
+        Css Class Binding
+        Event Binding

@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    margin:0px;
+    padding:2px;
+    background-color: #fafafa;
+}
+
+section{
+    margin:5px;
+    padding:5px;
+    border-radius: 10px;
+}
