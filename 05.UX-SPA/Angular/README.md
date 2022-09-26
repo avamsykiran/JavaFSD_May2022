@@ -136,6 +136,31 @@ Data Binding
 
     One-Way Data Binding
         Attribute Binding
+
+            <tagName attribute="value"> tagContent </tagName>
+            <tagName [attribute]="fieldOrAnAngularExpression"> tagContent </tagName>
+
         Style Binding
+
+            <tagName [style.cssProperty]="fieldOrAnAngularExpression"> tagContent </tagName>
+
         Css Class Binding
+
+            <tagName [class]="{'class-name1':booleanField,'class-name2':booleanField2}"> tagContent </tagName>
+
+            <tagName [class.className1]="booleanField"  > tagContent </tagName>
+
         Event Binding
+
+            we bind methods with event directives.
+
+                html event attribute            event directive
+
+                    onSubmit                        ngSubmit
+                    onClick                         click
+                    onBlur                          blur
+                    onFocus                         focus
+                    onChange                        change
+                    .....etc
+
+            <tagName (eventDirective)="method()"> content </tagName>

@@ -1,4 +1,29 @@
 <section class="welcome">
     <h5>Welcome</h5>
     <p>Hello <strong>{{userName}}</strong>! We welcome you to our first Angular SPA</p>
+
+    <form>
+        <input type="text" name="tb1" [(ngModel)]="userName" />
+        <label>
+            <input type="range" name="tc2" [(ngModel)]="logoWidth" min="50" max="500" />
+            {{logoWidth}} px.
+        </label>
+        <label>
+            <input type="checkbox" name="ch1" [(ngModel)]="isBorderApplied" />
+            Apply Border
+        </label>
+        <label>
+            <input type="checkbox" name="ch2" [(ngModel)]="isCenterApplied" />
+            Apply Center
+        </label>
+    </form>
+
+    <div>
+        <img 
+            [src]="logos[logoIndex]"
+            [style.width.px]="logoWidth"
+            [class.border]="isBorderApplied"
+            [class.center]="isCenterApplied"
+            (click)="toggle()" />
+    </div>
 </section>
