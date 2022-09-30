@@ -1,0 +1,8 @@
+.pd{
+    background-color: #ffcc00;
+}
+
+.pd>div{
+    columns: 2;
+    border-bottom: 0.5px dashed #000000;
+}

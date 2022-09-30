@@ -1,0 +1,40 @@
+<section class="pd">
+    <h5>String Pipes</h5>
+    <div>
+        <div><strong>Original</strong> : <em>{{strData}}</em></div>
+        <div><strong>lowercase</strong> : <em>{{strData|lowercase}}</em></div>
+        <div><strong>uppercase</strong> : <em>{{strData|uppercase}}</em></div>
+        <div><strong>titlecase</strong> : <em>{{strData|titlecase}}</em></div>
+    </div>
+
+    <h5>Number Pipe</h5>
+    <div>
+        <div><strong>Original</strong> : <em>{{numData}}</em></div>
+        <div><em>{{numData|number:'4.0-0'}}</em></div>
+        <div><em>{{numData|number:'4.0-1'}}</em></div>
+        <div><em>{{numData|number:'4.0-2'}}</em></div>
+        <div><em>{{numData|number:'4.0-3'}}</em></div>
+    </div>
+
+    <h5>Currency Pipe</h5>
+    <div>
+        <div><strong>Original</strong> : <em>{{numData}}</em></div>
+        <div><em>{{numData|currency:'INR'}}</em></div>
+        <div><em>{{numData|currency:'USD'}}</em></div>
+        <div><em>{{numData|currency:'JPY'}}</em></div>
+        <div><em>{{numData|currency:'GBP'}}</em></div>
+        <div><em>{{numData|currency:'ABC'}}</em></div>        
+    </div>
+
+    <h5>Date Pipe</h5>
+    <div>
+        <div><strong>Original</strong> : <em>{{dateData}}</em></div>
+        <div><em>{{dateData|date:'short'}}</em></div>        
+        <div><em>{{dateData|date:'long'}}</em></div>        
+        <div><em>{{dateData|date:'dd-MM-yy'}}</em></div>        
+        <div><em>{{dateData|date:'dd-MMM-yyyy'}}</em></div>        
+        <div><em>{{dateData|date:'dd-MMMM-yyyy hh:mm:ss a'}}</em></div>        
+        <div><em>{{dateData|date:'dd-MMMM-yyyy HH:mm:ss'}}</em></div>        
+    </div>
+
+</section>

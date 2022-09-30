@@ -1,0 +1,7 @@
+.friends{
+    background-color: #aaaaaa;
+}
+
+.friends>form,.friends>div{
+    margin: 5px;
+}

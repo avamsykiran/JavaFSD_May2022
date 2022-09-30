@@ -103,7 +103,23 @@ Angular Archetecture
             }
 
         Structural Directive
+
+            *ngIf
+            *ngFor
+            ngSwitch
+                *ngSwitchCase
+                *ngDefault
+
     Pipe
+        is sued to tranform a value just before it is rendered on the screen.
+
+            lowercase
+            uppercase
+            titlecase
+            number
+            currecy
+            date
+
         @Pipe({
             name:''
         })
@@ -164,3 +180,90 @@ Data Binding
                     .....etc
 
             <tagName (eventDirective)="method()"> content </tagName>
+
+Bootstrap Integration
+-----------------------------------------------------------------
+    npm install bootstrap --save
+
+    angular.json
+        |
+        |- styles       include node_modules/bootstrap/dist/css/bootstrap.mion.css
+        |- scripts      include node_modules/bootstrap/dist/js/bootstrap.min.js
+
+Routing
+-----------------------------------------------------------------
+
+    RouterModule from '@angular/router'
+
+        Route           {
+                            path:'',
+                            component:Component1,
+                            pathMatch:'startsWith|full',
+                            redirectTo:'',
+                            children:[]
+                        }
+
+        Routes          Route[]
+
+        router-outlet      component <router-outlet></router-outlet>
+
+        routerLink          attribute directive for 'a' element instead of 'href'
+        routerLinkActive    attribute directive for 'a' element used to apply a css class on active links
+
+        forRoot         used to load all Routes .
+
+        ActivatedRoute      is a service, used to extract path variable or query params from a url
+        Router              is a service, used to programatically navigate from a component to another component
+        
+Observables - RxJS
+------------------------------------------------------------------
+
+    Observables are enhanced Promises
+
+        Promise can emit only only value that too after the completion of the job.
+        Observable can emit as many value as we want until the job is complete.
+
+        const job = observer => {
+            observer.next(val); //can be used to emit a value in due course of job execution
+            observer.error(err); //can be used to raise an error in due course of job execution
+            observer.complete(); //can be used to indicate the job completion.
+        };
+
+        let ob = new Observable(job);
+
+        ob.subscribe({
+            next: val => {/*catch the value and consume it*/ },
+            error: err => {/*catch the err and inform th user accordingly */ },
+            complete: () => {/*proceed furthur as the job is done*/ },
+        })
+
+HttpClient
+------------------------------------------------------------------
+
+    HttpClient from 'HttpClientModule' from '@angular/commons/http'
+
+    HttpClient
+        get(url) : Observable
+        put(url,reqBody) : Observable
+        post(url,reqBody) : Observable
+        delete(url) : Observable
+
+Angular Life Cycle Methods - Hooks
+------------------------------------------------------------------
+
+    ngOnChanges: When an input/output binding value changes.
+    ngOnInit: After the first ngOnChanges.
+    ngDoCheck: Developer's custom change detection.
+    ngAfterContentInit: After component content initialized.
+    ngAfterContentChecked: After every check of component content.
+    ngAfterViewInit: After a component's views are initialized.
+    ngAfterViewChecked: After every check of a component's views.ngOnDestroy: Just before the component/directive is destroyed.
+
+
+Decomposing Components
+------------------------------------------------------------------
+
+Angular Forms
+------------------------------------------------------------------
+
+
