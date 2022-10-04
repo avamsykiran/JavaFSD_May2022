@@ -1,4 +1,4 @@
-<div class="col-sm-9 p-2">
+<div class="col-sm-9 p-2 mx-auto">
     <h5>Accounts</h5>
 
     <p class="alert alert-info p-3 fw-bold" *ngIf="!accounts && !errMsg">
@@ -8,7 +8,7 @@
     <p class="alert alert-danger p-3 fw-bold" *ngIf="errMsg">
         {{errMsg}}
     </p>
-    
+
     <p class="alert alert-info p-3 fw-bold" *ngIf="accounts && accounts.length===0">
         No records to display
     </p>
@@ -21,6 +21,7 @@
                 <th>Mobile</th>
                 <th>Mail</th>
                 <th>Balance</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,11 @@
                 <td>{{a.mobile}}</td>
                 <td>{{a.mailId}}</td>
                 <td class="text-end">{{a.currentBalance|currency:'INR'}}</td>
+                <td>
+                    <a [routerLink]="['/editAccount',a.ahId]" class="btn btn-sm btn-primary">
+                        EDIT
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>

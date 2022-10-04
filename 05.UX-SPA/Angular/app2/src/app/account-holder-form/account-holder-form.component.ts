@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AccountHolder } from '../models/account-holder';
+import { AccountHoldersService } from '../services/account-holders.service';
 
 @Component({
   selector: 'app-account-holder-form',
@@ -7,9 +10,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountHolderFormComponent implements OnInit {
 
-  constructor() { }
+  account:AccountHolder;
+  errMsg!:string;
+  isNew:boolean;
 
-  ngOnInit(): void {
+  constructor(private ahs:AccountHoldersService,private router:Router,private activatedRoute:ActivatedRoute) {
+    this.account={ahId:0,fullName:'',mobile:'',mailId:'',currentBalance:0};
+    this.isNew=true;
   }
 
+  ngOnInit(): void {
+    let ahId = this.activatedRoute.snapshot.params["ahId"];
+
+    if(ahId){
+      this.isNew=false;
+      this.ahs.getAccountById(ahId).subscribe({
+        next: data => this.account=data,
+        error: err => {console.error(err);this.errMsg="Unable to load record!";}
+      })
+    }
+  }
+
+  save(){
+    let ob = null;
+
+    if(this.isNew){
+      ob = this.ahs.addAccount(this.account);
+    }else{
+      ob = this.ahs.updateAccount(this.account);
+    }
+
+    ob.subscribe({
+      next: data => this.router.navigateByUrl("/accounts"),
+      error: err => {console.error(err);this.errMsg="Unable to save record!";}
+    })
+  }
 }

@@ -259,7 +259,6 @@ Angular Life Cycle Methods - Hooks
     ngAfterViewInit: After a component's views are initialized.
     ngAfterViewChecked: After every check of a component's views.ngOnDestroy: Just before the component/directive is destroyed.
 
-
 Decomposing Components
 ------------------------------------------------------------------
 

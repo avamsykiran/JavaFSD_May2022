@@ -14,6 +14,7 @@ const routes : Routes =[
   {path:'',pathMatch:'full',redirectTo:'/accounts'},
   {path:'accounts',component:AccountHoldersComponent},
   {path:'addAccount',component:AccountHolderFormComponent},
+  {path:'editAccount/:ahId',component:AccountHolderFormComponent},
   {path:'obDemo',component:NumberSeriesGroupComponent}
 ];
 
