@@ -259,10 +259,28 @@ Angular Life Cycle Methods - Hooks
     ngAfterViewInit: After a component's views are initialized.
     ngAfterViewChecked: After every check of a component's views.ngOnDestroy: Just before the component/directive is destroyed.
 
-Decomposing Components
-------------------------------------------------------------------
 
 Angular Forms
 ------------------------------------------------------------------
 
+    Template Driven form            Reactive Form / Model Driven form
+        FromsModule                             ReactiveFormsModule
+            ngForm                                  FormGroup
+                valid                                   valid
+                invalid                                 invalid
+            ngModel                                 FormControl
+                dirty                                   dirty
+                prestine                                prestine
+                touched                                 touched
+                untouched                               untouched
+                valid                                   valid
+                invalid                                 invalid
+                errors                                  errors
+                                                    FormControlName
 
+Decomposing Components - (Parent Child Components)
+------------------------------------------------------------------
+
+    Parent has to share data to Child Component
+
+    Child has to raise an event to be handled by Parent Component

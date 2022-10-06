@@ -5,21 +5,21 @@
         {{errMsg}}
     </p>
 
-    <form (ngSubmit)="save()" #ahForm="ngForm">
+    <form (ngSubmit)="save()" [formGroup]="ahForm">
         <div>
             <label>Account#</label>
-            <input type="number" name="ahId" [(ngModel)]="account.ahId" readonly class="form-control" />
+            <input type="number" formControlName="ahId" readonly class="form-control" />
         </div>
         <div>
             <label>Full Name</label>
-            <input type="text" name="fnm" [(ngModel)]="account.fullName" #fnm="ngModel" class="form-control" required />
+            <input type="text" formControlName="fullName" class="form-control"/>
             <div *ngIf="fnm.invalid && (fnm.touched || fnm.dirty)" class="alert alert-danger p-1">
                 <p *ngIf="fnm.errors!['required']">Full Name is a required field</p>
             </div>
         </div>
         <div>
             <label>Mobile</label>
-            <input type="text" name="mob" [(ngModel)]="account.mobile" #mob="ngModel" class="form-control" required pattern="[1-9][0-9]{9}"/>
+            <input type="text" formControlName="mobile" class="form-control" />
             <div *ngIf="mob.invalid && (mob.touched || mob.dirty)" class="alert alert-danger p-1">
                 <p *ngIf="mob.errors!['required']">Mobile is a required field</p>
                 <p *ngIf="mob.errors!['pattern']">Mobile is expected to be a 10 digit number.</p>
@@ -27,7 +27,7 @@
         </div>
         <div>
             <label>Mail</label>
-            <input type="email" name="mid" [(ngModel)]="account.mailId" #mid="ngModel" class="form-control" required />
+            <input type="email" formControlName="mailId" class="form-control" />
             <div *ngIf="mid.invalid && (mid.touched || mid.dirty)" class="alert alert-danger p-1">
                 <p *ngIf="mid.errors!['required']">Mail Id is a required field</p>
                 <p *ngIf="mid.errors!['email']">Mail Id is expected to be a valid email id.</p>
