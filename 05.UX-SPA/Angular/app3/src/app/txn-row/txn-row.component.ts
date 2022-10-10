@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Txn } from '../models/txn';
 
 @Component({
   selector: 'app-txn-row',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./txn-row.component.css']
 })
 export class TxnRowComponent implements OnInit {
+
+  @Input()
+  txn!:Txn;
 
   constructor() { }
 
