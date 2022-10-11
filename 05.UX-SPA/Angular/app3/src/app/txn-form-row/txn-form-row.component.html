@@ -1,1 +1,21 @@
-<p>txn-form-row works!</p>
+<form class="row border-bottom p-1" (ngSubmit)="raiseFormSubmitted()">
+    <div class="col-sm-1 text-end">
+        {{txn.txnId}}
+    </div>
+    <div class="col-sm-2 text-center">
+        <input type="date" name="dt" [(ngModel)]="txnDate" class="form-control" />
+    </div>
+    <div class="col">
+        <input type="text" name="dp" [(ngModel)]="txn.desp" class="form-control" />
+    </div>
+    <div class="col-sm-2 text-end" (click)="changeType('CREDIT')">
+        <input type="number" name="amt" [(ngModel)]="txn.amount" class="form-control" *ngIf="txn.type=='CREDIT'"/>
+    </div>
+    <div class="col-sm-2 text-end" (click)="changeType('DEBIT')">
+        <input type="number" name="amt" [(ngModel)]="txn.amount" class="form-control" *ngIf="txn.type=='DEBIT'"/>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-sm btn-info me-1" >SAVE</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="raiseCancelBtnClicked()">CANCEL</button>
+    </div>
+</form>

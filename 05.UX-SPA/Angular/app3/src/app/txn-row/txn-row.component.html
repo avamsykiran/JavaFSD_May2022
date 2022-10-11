@@ -15,7 +15,7 @@
         <span *ngIf="txn.type==='DEBIT'">{{txn.amount|currency:'INR'}}</span>
     </div>
     <div class="col-sm-2">
-        <button type="button" class="btn btn-sm btn-info me-1">EDIT</button>
-        <button type="button" class="btn btn-sm btn-danger">DELETE</button>
+        <button type="button" class="btn btn-sm btn-info me-1" (click)="raiseEditEvent()">EDIT</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="raiseDeleteEvent()">DELETE</button>
     </div>
 </div>

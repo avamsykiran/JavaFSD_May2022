@@ -281,6 +281,14 @@ Angular Forms
 Decomposing Components - (Parent Child Components)
 ------------------------------------------------------------------
 
-    Parent has to share data to Child Component
+    Parent has to share data to Child Component through attributes.
+
+        an attribute is a data memeber of the child component and is
+        expected to be marked as @Input()
 
     Child has to raise an event to be handled by Parent Component
+
+        EvetnEmitter<?> from @angular/core is used to raise our own events.
+
+        Child component can raise its own event using the EventEmitter and it
+        is to be marked as @Output() so that the parent can handle it.

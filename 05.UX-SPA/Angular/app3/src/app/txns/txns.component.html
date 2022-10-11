@@ -72,11 +72,20 @@
 
         <ng-container *ngIf="txns && txns.length>0">
             <ng-container *ngFor="let t of txns">
-                <app-txn-row *ngIf="!t.editable" [txn]="t"></app-txn-row>
-                <app-txn-form-row *ngIf="t.editable"></app-txn-form-row>    
+                <app-txn-row 
+                    *ngIf="!t.editable" 
+                    [txn]="t" 
+                    (editBtnClicked)="markEditable($event)" 
+                    (deleteBtnClicked)="deleteTxn($event)">
+                </app-txn-row>
+                <app-txn-form-row 
+                    *ngIf="t.editable"
+                    [txn]="t"
+                    (formSubmitted)="updateTxn($event)"
+                    (cancelBtnClicked)="unMarkEditable($event)"></app-txn-form-row>    
             </ng-container>
         </ng-container>
 
-        <app-txn-form-row></app-txn-form-row>
+        <app-txn-form-row (formSubmitted)="addTxn($event)"></app-txn-form-row>
     </ng-container>
 </div>

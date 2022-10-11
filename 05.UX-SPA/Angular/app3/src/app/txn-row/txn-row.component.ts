@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Txn } from '../models/txn';
 
 @Component({
@@ -11,9 +11,25 @@ export class TxnRowComponent implements OnInit {
   @Input()
   txn!:Txn;
 
-  constructor() { }
+  @Output()
+  editBtnClicked:EventEmitter<number>;
+  
+  @Output()
+  deleteBtnClicked:EventEmitter<number>;
+
+  constructor() {
+    this.editBtnClicked=new EventEmitter<number>();
+    this.deleteBtnClicked=new EventEmitter<number>();
+  }
 
   ngOnInit(): void {
   }
 
+  raiseEditEvent(){
+    this.editBtnClicked.emit(this.txn.txnId);
+  }
+
+  raiseDeleteEvent(){
+    this.deleteBtnClicked.emit(this.txn.txnId);
+  }
 }
