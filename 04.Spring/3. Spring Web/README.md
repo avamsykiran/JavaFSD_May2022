@@ -210,3 +210,59 @@ Spring Web
 
         is a sub-module provided by spring boot module of spring framework and provides
         the testing platform for with all neccssary inclusions like mockito and hamcrest.
+
+Authentication and Authorization
+
+    Authentication is to verify and confirm the identity of the user. It is done using a
+    public key (userid/username/emailId/mobile...etc) and a private key (PIN/Password/OTP...etc).
+    Authentication on successful verification grants entry into the app.
+
+    anonymous user  is a user that did not log in yet.
+    and authenticated user is a user whose credentials are verifeid meaning he logged in.
+
+    Authorization is to check if the authenticated user has a privilage or not. Privileage is
+    access to one or moe resources or operations. Is managed based on 'roles' like for a 
+    e-commerce application ADMIN/CONSUMER/VENDOR/DELIVERY ..etc., can be roles.
+
+Authentication is done via a large variety of machanisims.
+
+    1. Form based Authentication
+    2. Token based Authentication
+        ..........etc.,
+
+    Form Based Authentication:
+        the user Identity is accepted from a html form
+        and that data is securly (in encrypted form ) is brought back to the server
+        and on the server the data is varified and if success then it is
+        maintianed in the session on the server. As long as the user keeps
+        interacting with the server, the session lives and rememebrs him as 
+        authenticated. and because of this after authentiction, the upcoming
+        request baring that session id are concidered authenticated.
+
+    Token Based Authentication
+        the user Identity is accepted from a html form
+        and that data is securly (in encrypted form ) is brought back to the server
+        and on the server the data is varified and if success then a token is generated
+        and issued to the user. this token has to be submitted along with each new request.
+        the token is verified every time a request comes in.
+
+        jwt - json web token
+            is one of the most common token standard used in token based authentication .
+
+            { header.payload.signature }
+
+CSRF    -   Cross Site  Reference Forgery
+
+        is enabled in case of dynamic web applications
+        and is disbled in case of rest-api.
+
+Spring Security Archetecture
+
+    UserDetails
+    UserDetailsService      loadUserByUserName(....)
+    AuthenticationManager
+    PasswordEncoder
+    HttpSecurity
+    WebSecurityConfigAdapter
+
+            https   =   http + SSL (Secured Socket Layer)

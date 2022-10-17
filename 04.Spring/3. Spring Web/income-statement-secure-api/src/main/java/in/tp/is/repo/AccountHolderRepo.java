@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import in.tp.is.entity.AccountHolder;
 
 public interface AccountHolderRepo extends JpaRepository<AccountHolder, Long> {
+	@Query("SELECT a FROM AccountHolder WHERE a.userAccount.userId=:userId")
+	Optional<AccountHolder> getByUserId(Long userId);
 	Optional<AccountHolder> findByMobile(String mobile);
 	Optional<AccountHolder> findByMailId(String mailId);
 }

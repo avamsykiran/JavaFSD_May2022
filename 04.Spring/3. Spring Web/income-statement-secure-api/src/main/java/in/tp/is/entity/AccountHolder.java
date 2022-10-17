@@ -36,19 +36,25 @@ public class AccountHolder {
 	@PositiveOrZero(message = "No negative values expected as currentBalance")
 	private Double currentBalance;
 	
-		public AccountHolder() {}
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn
+	private StatementUser userAccount;
+	
+	public AccountHolder() {}
 	
 	public AccountHolder(Long ahId,
 			@NotBlank(message = "full name can not be left blank") @Size(min = 4, max = 50, message = "full name is expected to be between 4 and 50 in length") String fullName,
 			@NotBlank(message = "mobile number can not be left blank") @Pattern(regexp = "[1-9][0-9]{9}", message = "mobile number is a 10 digit number starting with a non-zero") String mobile,
 			@NotBlank(message = "mail id can not be left blank") @Email(message = "expecting a valid mail id") String mailId,
-			@PositiveOrZero(message = "No negative values expected as currentBalance") Double currentBalance) {
+			@PositiveOrZero(message = "No negative values expected as currentBalance") Double currentBalance,
+			StatementUser userAccount) {
 		super();
 		this.ahId = ahId;
 		this.fullName = fullName;
 		this.mobile = mobile;
 		this.mailId = mailId;
 		this.currentBalance = currentBalance;
+		this.userAccount = userAccount;
 	}
 
 
@@ -92,7 +98,14 @@ public class AccountHolder {
 		this.currentBalance = currentBalance;
 	}
 	
-	
+	public StatementUser getUserAccount() {
+		return userAccount;
+	}
+
+	public void setUserAccount(StatementUser userAccount) {
+		this.userAccount = userAccount;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
