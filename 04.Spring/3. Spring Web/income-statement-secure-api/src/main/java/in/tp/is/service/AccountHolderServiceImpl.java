@@ -14,6 +14,9 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	@Autowired
 	private AccountHolderRepo ahRepo;
 	
+	@Autowired
+	private UserDeatilsServiceImpl userService;
+	
 	@Override
 	public List<AccountHolder> findAll() {
 		return ahRepo.findAll();
@@ -26,6 +29,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 
 	@Override
 	public AccountHolder save(AccountHolder ah) {
+		userService.createUser(ah.getUserAccount());
 		return ahRepo.save(ah);
 	}
 

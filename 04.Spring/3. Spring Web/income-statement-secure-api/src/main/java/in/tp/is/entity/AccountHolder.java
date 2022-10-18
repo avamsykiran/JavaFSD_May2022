@@ -36,7 +36,7 @@ public class AccountHolder {
 	@PositiveOrZero(message = "No negative values expected as currentBalance")
 	private Double currentBalance;
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn
 	private StatementUser userAccount;
 	
