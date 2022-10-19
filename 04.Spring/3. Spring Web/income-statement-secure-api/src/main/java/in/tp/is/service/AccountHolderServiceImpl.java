@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import in.tp.is.entity.AccountHolder;
+import in.tp.is.entity.StatementUser;
+import in.tp.is.entity.UserRole;
 import in.tp.is.repo.AccountHolderRepo;
 
 @Service
@@ -29,7 +31,7 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 
 	@Override
 	public AccountHolder save(AccountHolder ah) {
-		userService.createUser(ah.getUserAccount());
+		ah.setUserAccount(userService.createUser(new StatementUser(null, ah.getMobile(), ah.getPassword(),UserRole.ACCOUNT )));
 		return ahRepo.save(ah);
 	}
 

@@ -64,17 +64,6 @@ public class AccountHolderController {
 		return txnsCtrl.sendTxns(ahId);
 	}
 	
-	@PostMapping
-	public ResponseEntity<AccountHolder> add(@RequestBody @Valid AccountHolder ah,BindingResult bindingResult) throws InvalidAccountHolderException{
-		
-		if(bindingResult.hasErrors()) {
-			throw new InvalidAccountHolderException(bindingResult.getAllErrors().stream().
-					map(e->e.getDefaultMessage()).reduce((m1,m2)->m1+","+m2).orElse("") + "\n" + ah.toString());
-		}
-		
-		return new ResponseEntity<>(ahService.save(ah),HttpStatus.CREATED);
-	}
-	
 	@PutMapping
 	public ResponseEntity<AccountHolder> update(@RequestBody @Valid AccountHolder ah,BindingResult bindingResult) throws InvalidAccountHolderException, OperationFailedException{
 		

@@ -10,11 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name="ahs")
@@ -38,7 +42,12 @@ public class AccountHolder {
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private StatementUser userAccount;
+	
+	@Transient
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String password;
 	
 	public AccountHolder() {}
 	
@@ -104,6 +113,14 @@ public class AccountHolder {
 
 	public void setUserAccount(StatementUser userAccount) {
 		this.userAccount = userAccount;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
