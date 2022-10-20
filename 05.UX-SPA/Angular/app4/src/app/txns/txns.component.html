@@ -1,0 +1,91 @@
+<div class="col-sm-10 mx-auto p-3">
+    <h5>Statement</h5>
+
+    <div class="alert alert-info p-2 fw-bold" *ngIf="!account && !txns && !errMsg">
+        Please wait while laoding accunt details....
+    </div>
+
+    <div class="alert alert-danger p-2 fw-bold" *ngIf="errMsg">
+        {{errMsg}}
+    </div>
+
+    <ng-container *ngIf="account">
+        <div class="border border-primary p-2">
+            <div class="row">
+                <div class="col-sm-1">
+                    Name
+                </div>
+                <div class="col fw-bold">
+                    {{account.fullName}}
+                </div>
+                <div class="col-sm-1">
+                    Mobile
+                </div>
+                <div class="col fw-bold">
+                    {{account.mobile}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                    Mail
+                </div>
+                <div class="col fw-vold">
+                    {{account.mailId}}
+                </div>
+                <div class="col-sm-1">
+                    Balance
+                </div>
+                <div class="col fw-bold">
+                    {{account.currentBalance|currency:'INR'}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom border-secondary p-1 fw-bold mt-2 text-center">
+            <div class="col-sm-1">
+                Txn#
+            </div>
+            <div class="col-sm-2">
+                Date
+            </div>
+            <div class="col">
+                Ledger
+            </div>
+            <div class="col-sm-2">
+                Credit
+            </div>
+            <div class="col-sm-2">
+                Debit
+            </div>
+            <div class="col-sm-2">
+                
+            </div>
+        </div>
+
+        <div class="alert alert-info p-2 fw-bold" *ngIf="!txns">
+            Please wait while loading transactions
+        </div>
+
+        <div class="alert alert-info p-2 fw-bold" *ngIf="txns && txns.length==0">
+            Seems like this account has no transactions recorded yet.
+        </div>
+
+        <ng-container *ngIf="txns && txns.length>0">
+            <ng-container *ngFor="let t of txns">
+                <app-txn-row 
+                    *ngIf="!t.editable" 
+                    [txn]="t" 
+                    (editBtnClicked)="markEditable($event)" 
+                    (deleteBtnClicked)="deleteTxn($event)">
+                </app-txn-row>
+                <app-txn-form-row 
+                    *ngIf="t.editable"
+                    [txn]="t"
+                    (formSubmitted)="updateTxn($event)"
+                    (cancelBtnClicked)="unMarkEditable($event)"></app-txn-form-row>    
+            </ng-container>
+        </ng-container>
+
+        <app-txn-form-row (formSubmitted)="addTxn($event)"></app-txn-form-row>
+    </ng-container>
+</div>

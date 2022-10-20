@@ -1,0 +1,40 @@
+<div class="col-sm-5 p-4 mx-auto">
+    <h5>{{isNew?"New":"Edit"}} Account </h5>
+
+    <p class="alert alert-danger p-2 fw-bold" *ngIf="errMsg">
+        {{errMsg}}
+    </p>
+
+    <form (ngSubmit)="save()" [formGroup]="ahForm">
+        <div>
+            <label>Account#</label>
+            <input type="number" formControlName="ahId" readonly class="form-control" />
+        </div>
+        <div>
+            <label>Full Name</label>
+            <input type="text" formControlName="fullName" class="form-control"/>
+            <div *ngIf="fnm.invalid && (fnm.touched || fnm.dirty)" class="alert alert-danger p-1">
+                <p *ngIf="fnm.errors!['required']">Full Name is a required field</p>
+            </div>
+        </div>
+        <div>
+            <label>Mobile</label>
+            <input type="text" formControlName="mobile" class="form-control" />
+            <div *ngIf="mob.invalid && (mob.touched || mob.dirty)" class="alert alert-danger p-1">
+                <p *ngIf="mob.errors!['required']">Mobile is a required field</p>
+                <p *ngIf="mob.errors!['pattern']">Mobile is expected to be a 10 digit number.</p>
+            </div>
+        </div>
+        <div>
+            <label>Mail</label>
+            <input type="email" formControlName="mailId" class="form-control" />
+            <div *ngIf="mid.invalid && (mid.touched || mid.dirty)" class="alert alert-danger p-1">
+                <p *ngIf="mid.errors!['required']">Mail Id is a required field</p>
+                <p *ngIf="mid.errors!['email']">Mail Id is expected to be a valid email id.</p>
+            </div>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary m-1" [disabled]="ahForm.invalid">SAVE</button>
+        </div>
+    </form>
+</div>
