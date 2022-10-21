@@ -7,8 +7,7 @@ import in.tp.is.entity.AccountHolder;
 public interface AccountHolderService {
 	List<AccountHolder> findAll();
 	AccountHolder findById(Long ahId);
-	AccountHolder findByMobile(String mobile);
-	AccountHolder findByMailId(String mailId);
+	AccountHolder getByUserName(String userName);
 	AccountHolder save(AccountHolder ah);
 	boolean exists(Long ahId);
 }

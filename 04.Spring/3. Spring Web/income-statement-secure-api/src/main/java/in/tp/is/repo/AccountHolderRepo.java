@@ -10,6 +10,4 @@ import in.tp.is.entity.AccountHolder;
 public interface AccountHolderRepo extends JpaRepository<AccountHolder, Long> {
 	@Query("SELECT a FROM AccountHolder a WHERE a.userAccount.userName=:userName")
 	Optional<AccountHolder> getByUserId(String userName);
-	Optional<AccountHolder> findByMobile(String mobile);
-	Optional<AccountHolder> findByMailId(String mailId);
 }

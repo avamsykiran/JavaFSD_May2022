@@ -4,4 +4,5 @@ export interface AccountHolder {
     mobile:string;
     mailId:string;
     currentBalance:number;
+    password?:string;
 }

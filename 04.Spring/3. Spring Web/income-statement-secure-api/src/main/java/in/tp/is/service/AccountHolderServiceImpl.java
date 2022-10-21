@@ -41,13 +41,8 @@ public class AccountHolderServiceImpl implements AccountHolderService {
 	}
 
 	@Override
-	public AccountHolder findByMobile(String mobile) {
-		return ahRepo.findByMobile(mobile).orElse(null);
-	}
-
-	@Override
-	public AccountHolder findByMailId(String mailId) {
-		return ahRepo.findByMailId(mailId).orElse(null);
+	public AccountHolder getByUserName(String userName) {
+		return this.ahRepo.getByUserId(userName).orElse(null);
 	}
 
 }

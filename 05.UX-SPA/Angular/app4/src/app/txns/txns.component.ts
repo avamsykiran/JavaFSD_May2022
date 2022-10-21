@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountHolder } from '../models/account-holder';
 import { Txn } from '../models/txn';
 import { AccountHoldersService } from '../services/account-holders.service';
+import { AuthService } from '../services/auth.service';
 import { TxnService } from '../services/txn.service';
 
 @Component({
@@ -12,62 +13,62 @@ import { TxnService } from '../services/txn.service';
 })
 export class TxnsComponent implements OnInit {
 
-  account!:AccountHolder;
-  txns!:Txn[];
-  errMsg!:string;
+  account!: AccountHolder;
+  txns!: Txn[];
+  errMsg!: string;
 
-  constructor(private txnService:TxnService,private ahService:AccountHoldersService,private activatedRoute:ActivatedRoute) { }
+  constructor(private txnService: TxnService, private ahService: AccountHoldersService, 
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadAccountDetails();
   }
 
-  loadAccountDetails(){
-    let ahId = this.activatedRoute.snapshot.params["ahId"];
-    this.ahService.getAccountById(ahId).subscribe({
-      next: account => {this.account=account; this.loadTxns();},
-      error: err => {console.log(err); this.errMsg="Unable to load account detials!"; }
+  loadAccountDetails() {
+    this.ahService.getAccountByUserName().subscribe({
+      next: account => { this.account = account; this.loadTxns(); },
+      error: err => { console.log(err); this.errMsg = "Unable to load account detials!"; }
     })
   }
 
-  loadTxns(){
+  loadTxns() {
     this.txnService.getAllTxnsByAccount(this.account.ahId).subscribe({
-      next: txns => this.txns=txns,
-      error: err => {console.log(err); this.errMsg="Unable to load transactions!"; }
+      next: txns => this.txns = txns,
+      error: err => { console.log(err); this.errMsg = "Unable to load transactions!"; }
     })
   }
 
-  addTxn(txn:Txn){
-    txn.holder=this.account;
+  addTxn(txn: Txn) {
+    txn.holder = this.account;
     this.txnService.addTxn(txn).subscribe({
       next: data => this.loadTxns(),
-      error: err => {console.log(err); this.errMsg="Unable to save transaction!"; }
+      error: err => { console.log(err); this.errMsg = "Unable to save transaction!"; }
     })
   }
 
-  updateTxn(txn:Txn){
-    txn.holder=this.account;
-    txn.editable=undefined;
+  updateTxn(txn: Txn) {
+    txn.holder = this.account;
+    txn.editable = undefined;
     this.txnService.updateTxn(txn).subscribe({
       next: data => this.loadTxns(),
-      error: err => {console.log(err); this.errMsg="Unable to save transaction!"; }
+      error: err => { console.log(err); this.errMsg = "Unable to save transaction!"; }
     })
   }
 
-  deleteTxn(txnId:number){
+  deleteTxn(txnId: number) {
     this.txnService.deleteTxnsById(txnId).subscribe({
       next: () => this.loadTxns(),
-      error: err => {console.log(err); this.errMsg="Unable to delete transaction!"; }
+      error: err => { console.log(err); this.errMsg = "Unable to delete transaction!"; }
     })
   }
 
-  markEditable(txnId:number){
-    let index = this.txns.findIndex(t => t.txnId==txnId);
-    this.txns[index].editable=true;
+  markEditable(txnId: number) {
+    let index = this.txns.findIndex(t => t.txnId == txnId);
+    this.txns[index].editable = true;
   }
 
-  unMarkEditable(txnId:number){
-    let index = this.txns.findIndex(t => t.txnId==txnId);
-    this.txns[index].editable=undefined;
+  unMarkEditable(txnId: number) {
+    let index = this.txns.findIndex(t => t.txnId == txnId);
+    this.txns[index].editable = undefined;
   }
 }

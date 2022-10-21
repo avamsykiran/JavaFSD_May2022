@@ -15,6 +15,7 @@ export class AccountHolderReactiveFormComponent implements OnInit {
   fnm:FormControl;
   mob:FormControl;
   mid:FormControl;
+  pwd:FormControl;
 
   ahForm:FormGroup;
 
@@ -26,8 +27,16 @@ export class AccountHolderReactiveFormComponent implements OnInit {
     this.fnm= new FormControl("",[Validators.required]);
     this.mob=new FormControl("",[Validators.required,Validators.pattern("[1-9][0-9]{9}")]);
     this.mid=new FormControl("",[Validators.required,Validators.email]);
+    this.pwd=new FormControl("",[Validators.required]);
 
-    this.ahForm=new FormGroup({ahId:this.ahIdFC,fullName:this.fnm,mobile:this.mob,mailId:this.mid,currentBalance:new FormControl(0)});
+    this.ahForm=new FormGroup({
+      ahId:this.ahIdFC,
+      fullName:this.fnm,
+      mobile:this.mob,
+      mailId:this.mid,
+      currentBalance:new FormControl(0),
+      password:this.pwd
+    });
     this.isNew=true;
   }
 

@@ -12,7 +12,7 @@ const routes: Routes = [
 //  {path:'accounts',component:AccountHoldersComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:AccountHolderReactiveFormComponent},
-  {path:'statement/:ahId',component:TxnsComponent,canActivate:[AuthGuard]}
+  {path:'statement',component:TxnsComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

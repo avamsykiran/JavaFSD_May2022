@@ -40,22 +40,16 @@ public class AccountHolderController {
 		return ResponseEntity.ok(ahService.findAll());
 	}
 	
-	@GetMapping("/{ahId:[1-9][0-9]{0,4}}")
+	@GetMapping("/{ahId}")
 	public ResponseEntity<AccountHolder> sendAccount(@PathVariable("ahId")Long ahId){
 		AccountHolder holder = ahService.findById(ahId);
 		//return holder!=null? new ResponseEntity<>(holder,HttpStatus.OK):new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		return holder!=null? ResponseEntity.ok(holder) : ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("/{mob:[1-9][0-9]{9}}")
-	public ResponseEntity<AccountHolder> sendAccountByMobile(@PathVariable("mob")String mobile){
-		AccountHolder holder = ahService.findByMobile(mobile);
-		return holder!=null? ResponseEntity.ok(holder) : ResponseEntity.notFound().build();
-	}
-	
-	@GetMapping("/{mail:.+@.+}")
-	public ResponseEntity<AccountHolder> sendAccountByMail(@PathVariable("mail")String mailId){
-		AccountHolder holder = ahService.findByMailId(mailId);
+	@GetMapping("/userName/{unm}")
+	public ResponseEntity<AccountHolder> sendAccountByUserName(@PathVariable("unm")String unm){
+		AccountHolder holder = ahService.getByUserName(unm);
 		return holder!=null? ResponseEntity.ok(holder) : ResponseEntity.notFound().build();
 	}
 	

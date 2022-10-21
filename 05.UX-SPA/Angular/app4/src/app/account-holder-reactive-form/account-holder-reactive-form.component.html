@@ -33,6 +33,13 @@
                 <p *ngIf="mid.errors!['email']">Mail Id is expected to be a valid email id.</p>
             </div>
         </div>
+        <div>
+            <label>Password</label>
+            <input type="password" formControlName="pwd" class="form-control" />
+            <div *ngIf="pwd.invalid && (pwd.touched || pwd.dirty)" class="alert alert-danger p-1">
+                <p *ngIf="pwd.errors!['required']">Password is a required field</p>
+            </div>
+        </div>
         <div class="d-grid">
             <button class="btn btn-primary m-1" [disabled]="ahForm.invalid">SAVE</button>
         </div>
