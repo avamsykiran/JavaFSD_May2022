@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtToken } from '../models/jwt-token';
 
@@ -10,9 +10,11 @@ import { JwtToken } from '../models/jwt-token';
 export class AuthService {
 
   apiUrl:string;
+  loginObservable:BehaviorSubject<boolean>;
 
   constructor(private httpClient:HttpClient) {
-    this.apiUrl="http://localhost:8888/login"
+    this.apiUrl="http://localhost:8888/login";
+    this.loginObservable = new BehaviorSubject<boolean>(false);
   }
 
   login(userName:string,password:string) : Observable<boolean>{
@@ -20,6 +22,7 @@ export class AuthService {
       map( jwtToken =>{
         sessionStorage.setItem("unm",userName);
         sessionStorage.setItem("token",jwtToken.token);
+        this.loginObservable.next(true);
         return true;
       })
     );
@@ -38,6 +41,11 @@ export class AuthService {
   }
 
   logout(){
+    this.loginObservable.next(false);
     sessionStorage.clear();
+  }
+
+  getLoginObservable():Observable<boolean>{
+    return this.loginObservable.asObservable();
   }
 }

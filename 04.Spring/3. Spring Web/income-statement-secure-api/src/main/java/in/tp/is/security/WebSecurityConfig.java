@@ -42,6 +42,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity
+			.cors().and()
 			.csrf().disable() // dont authenticate this particular request
 			.authorizeRequests().antMatchers("/login", "/register").permitAll()
 			.anyRequest().authenticated().and() //all other requests need to be authenticated
