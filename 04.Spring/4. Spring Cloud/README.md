@@ -17,7 +17,7 @@ Microservices
         + Interaperobility is possible
         + Upgradability
 
-        Chalenges
+        Challenges
             1. Decomposition
             2. Server addresses are dynamic due to scalability, hence difficult for inter-service communication.
             3. Database Management
@@ -52,3 +52,41 @@ Microservices
             Load Balancing Design Pattern
             Circuite Breaker Design Pattern
 
+    Monolythic IncomeStatement CaseStudy:
+        1. An AccountHolder has to register
+        2. An AccountHolder can update his profile
+        3. An AccountHolder can add a Txn
+        4. An AccountHolder can update a Txn
+        5. An AccountHolder can delete a Txn
+        6. An AccountHolder can retrive all of his Txns periodically
+        7. An AccountHolder can retrive the statement summary
+
+
+    Microservices Approach IncomeStatement CaseStudy
+        Decompositon By doamin
+            profile-service
+                1. An AccountHolder has to register
+                2. An AccountHolder can update his profile
+            txns-service
+                3. An AccountHolder can add a Txn
+                4. An AccountHolder can update a Txn
+                5. An AccountHolder can delete a Txn
+                6. An AccountHolder can retrive all of his Txns periodically
+            statement-service
+                7. An AccountHolder can retrive the statement summary
+
+        Decomposition By sub-domain
+            profile-service
+                AccountHolder (entity)
+                    Long ahId,String fullName,String mobile,String mailId
+            txns-service
+                AccountHolder (entity)
+                    Long ahId,Double currentBalance,Set<Txn> txns
+                Txn (Entity)
+            statement-service
+                Statement     (model)
+                AccountHolder (model)
+                    Long ahId,String fullName,String mobile,String mailId,Double currentBalance
+                Txn           (model)
+
+            
