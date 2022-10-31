@@ -1,0 +1,46 @@
+
+Monolithic ERM (Employee Roll Management) app 
+    1. An employee can be added
+    2. An employee can be updated
+    3. An employee can be deleted
+    4. An employee timesheet can be added
+    5. An employee timesheet can be updated
+    6. An employee monthly effort-report is computed based on the recorded timesheets
+    7. An employee pay-slip is generated based on the number of days he worked as per the effort-report.
+
+Microservice Approach
+    Decomposiuton by Domain
+        profile-service
+            1. An employee can be added
+            2. An employee can be updated
+            3. An employee can be deleted
+        
+        timesheet-service
+            4. An employee timesheet can be added
+            5. An employee timesheet can be updated
+    
+        payslip-service
+            6. An employee monthly effort-report is computed based on the recorded timesheets
+            7. An employee pay-slip is generated based on the number of days he worked as per the effort-report.
+
+    Decomposiuton by sub=Domain
+        profile-service
+            Employee    (entity)
+                Long empId, String fullName,String mobile,String mailId,String designation,String department,LocalDate dateOfJoining
+        
+        timesheet-service
+            Employee    (entity)
+                Long empId,Set<TimeSheet> timeSheets
+            TimeSheet   (entity)
+                Long tsId,LocalDate tsDate,LocalTime timeIn,LocalTime timeOut
+        
+        payslip-service
+            Employee    (model)
+                Long empId, String fullName,String mobile,String mailId,String designation,String department,LocalDate dateOfJoining
+            TimeSheet   (model)
+                Long tsId,LocalDate tsDate,LocalTime timeIn,LocalTime timeOut
+            PaySlip     (model)
+                Employee employee,Set<TimeSheet> timeSheets,Double workingHours,Double salary
+
+                
+                
