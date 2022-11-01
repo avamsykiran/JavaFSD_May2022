@@ -33,8 +33,8 @@ Microservices
             Stangler Design Pattern
 
         Database Design Patterns
-            Shared Database Design Pattern
-            Single Database Design Pattern
+            Shared Database Design Pattern                  
+            Per Service Database Design Pattern
             Command Querry Request Saggregation Design Pattern (CQRS)
             Saga Design Pattern
 
@@ -60,7 +60,6 @@ Microservices
         5. An AccountHolder can delete a Txn
         6. An AccountHolder can retrive all of his Txns periodically
         7. An AccountHolder can retrive the statement summary
-
 
     Microservices Approach IncomeStatement CaseStudy
         Decompositon By doamin
@@ -89,4 +88,48 @@ Microservices
                     Long ahId,String fullName,String mobile,String mailId,Double currentBalance
                 Txn           (model)
 
-            
+        Per Service Database Design Pattern
+
+            profile-service     <------------>      txns-service    <---------->        statement-service
+                ↑↓                                       ↑↓
+             profileDB                                 txnsDB
+
+        
+        Gateway Design Pattern
+
+                Angular/React/Andriod Clients
+                           ↑↓ 
+                    gateway-service
+                     localhost:9999
+                (spring cloud api gateway)
+                          ↑↓
+                ----------------------------------------------------------------------------------
+                ↑↓                                      ↑↓                                      ↑↓
+            profile-service     <------------>      txns-service    <---------->        statement-service
+             localhost:9101                        localhost:9201                         localhost:9301  
+                ↑↓                                       ↑↓
+             profileDB                                 txnsDB
+
+
+        Distributed Logging Design Patterns & Distrbuted Tracing Design Patterns
+
+
+                Angular/React/Andriod Clients
+                           ↑↓ 
+                    gateway-service
+                     localhost:9999
+                (spring cloud api gateway)
+                          ↑↓
+                ----------------------------------------------------------------------------------
+                ↑↓                                      ↑↓                                      ↑↓
+            profile-service     <------------>      txns-service    <---------->        statement-service
+             localhost:9101                        localhost:9201                         localhost:9301  
+                ↑↓                                       ↑↓
+             profileDB                                 txnsDB
+                   sleuth                                  sleuth                                  sleuth
+                  zipkin-client                         zipkin-client                           zipkin-client    
+                    ↑↓                                      ↑↓                                      ↑↓
+                    ----------------------------------------------------------------------------------
+                           ↑↓ 
+                    tracing-service
+                    (zipkin-server)
