@@ -50,6 +50,7 @@ Microservices
         Cross-Cutting Design Patterns
             Discovery Service Design Pattern
             Load Balancing Design Pattern
+            External Configuaration Design Pattern
             Circuite Breaker Design Pattern
 
     Monolythic IncomeStatement CaseStudy:
@@ -113,7 +114,6 @@ Microservices
 
         Distributed Logging Design Patterns & Distrbuted Tracing Design Patterns
 
-
                 Angular/React/Andriod Clients
                            ↑↓ 
                     gateway-service
@@ -133,3 +133,85 @@ Microservices
                            ↑↓ 
                     tracing-service
                     (zipkin-server)
+
+        Discovery Service Design Pattern
+        
+                Angular/React/Andriod Clients
+                           ↑↓ 
+                    gateway-service         <-------------------------------->  discovery-service
+                    localhost:9999                                               localhost:9000
+                (spring cloud api gateway)                                    (netflix eureka discovery service)
+                          ↑↓                                                            ↑↓
+                ----------------------------------------------------------------------------------
+                ↑↓                                      ↑↓                                      ↑↓
+            profile-service     <------------>      txns-service    <---------->        statement-service
+             localhost:9101                        localhost:9201                         localhost:9301  
+             localhost:9102                        localhost:9202
+             localhost:9103
+                ↑↓                                       ↑↓
+             profileDB                                 txnsDB
+                   sleuth                                  sleuth                                  sleuth
+                  zipkin-client                         zipkin-client                           zipkin-client    
+                    ↑↓                                      ↑↓                                      ↑↓
+                    ----------------------------------------------------------------------------------
+                           ↑↓ 
+                    tracing-service
+                    (zipkin-server)
+
+        Load Balancing Design Pattern
+        
+                Angular/React/Andriod Clients
+                           ↑↓ 
+                    gateway-service         <-------------------------------->  discovery-service
+                    localhost:9999                                               localhost:9000
+                (spring cloud api gateway)                                    (netflix eureka discovery service)
+                          ↑↓                                                            ↑↓
+                ----------------------------------------------------------------------------------
+                ↑↓                                      ↑↓                                      ↑↓
+            profile-service     <------------>      txns-service    <---------->        statement-service
+             localhost:9101                        localhost:9201                         localhost:9301  
+             localhost:9102                        localhost:9202
+             localhost:9103
+                ↑↓                                       ↑↓
+             profileDB                                 txnsDB
+                spring cloud load balancer              spring cloud load balancer              spring cloud load balancer
+                   sleuth                                  sleuth                                  sleuth
+                  zipkin-client                         zipkin-client                           zipkin-client    
+                    ↑↓                                      ↑↓                                      ↑↓
+                    ----------------------------------------------------------------------------------
+                           ↑↓ 
+                    tracing-service
+                    (zipkin-server)
+        
+        External Configuaration Design Pattern
+
+                Angular/React/Andriod Clients
+                           ↑↓ 
+                    gateway-service         <-------------------------------->  discovery-service
+                    localhost:9999                                               localhost:9000
+                (spring cloud api gateway)                                    (netflix eureka discovery service)
+                          ↑↓                                                            ↑↓
+                ----------------------------------------------------------------------------------
+                ↑↓                                      ↑↓                                      ↑↓
+            profile-service     <------------>      txns-service    <---------->        statement-service
+             localhost:9101                        localhost:9201                         localhost:9301  
+             localhost:9102                        localhost:9202
+             localhost:9103
+                ↑↓                                       ↑↓
+             profileDB                                 txnsDB
+                spring cloud load balancer              spring cloud load balancer              spring cloud load balancer
+                   sleuth                                  sleuth                                  sleuth
+                  zipkin-client                         zipkin-client                           zipkin-client    
+                    ↑↓                                      ↑↓                                      ↑↓
+                    ----------------------------------------------------------------------------------
+                           ↑↓                                                             ↑↓ 
+                    tracing-service                                                     config-service
+                    (zipkin-server)                                                   (spring cloud config server)
+                                                                                        ↑↓ 
+                                                                                        GitRepo
+                                                                                            profile.properties
+                                                                                            txns.properties
+                                                                                            stateemnt.properties
+                                                                                            gateway.properties
+
+                
