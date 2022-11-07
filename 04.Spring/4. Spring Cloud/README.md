@@ -214,7 +214,7 @@ Microservices
                                                                                             stateemnt.properties
                                                                                             gateway.properties
 
-       Implementing Budget-tracker
+    Implementing Budget-tracker
                                             
         Step#1  implementing decomposed services and do inter-service communication and aggregator
             in.bta:bta-profiles
