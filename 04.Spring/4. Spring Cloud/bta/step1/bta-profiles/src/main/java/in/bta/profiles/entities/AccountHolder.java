@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 @Table(name = "ahs")
 public class AccountHolder {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ahId;
 	@NotBlank(message="fullName is mandate")
 	private String fullName;

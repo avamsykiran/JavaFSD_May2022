@@ -285,6 +285,7 @@ Microservices
                     ++@EnableDiscoveryClient  on Application class
 
                     eureka.client.serviceUrl.defaultZone=http://localhost:9000/eureka/
+                    eureka.instance.prefer-ip-address=true
                     eureka.client.initialInstanceInfoReplicationIntervalSeconds=5
                     eureka.client.registryFetchIntervalSeconds=5
                     eureka.instance.leaseRenewalIntervalInSeconds=5
@@ -300,6 +301,7 @@ Microservices
                     ++@EnableDiscoveryClient  on Application class
 
                     eureka.client.serviceUrl.defaultZone=http://localhost:9000/eureka/
+                    eureka.instance.prefer-ip-address=true
                     eureka.client.initialInstanceInfoReplicationIntervalSeconds=5
                     eureka.client.registryFetchIntervalSeconds=5
                     eureka.instance.leaseRenewalIntervalInSeconds=5
@@ -315,6 +317,7 @@ Microservices
                     ++@EnableDiscoveryClient  on Application class
 
                     eureka.client.serviceUrl.defaultZone=http://localhost:9000/eureka/
+                    eureka.instance.prefer-ip-address=true
                     eureka.client.initialInstanceInfoReplicationIntervalSeconds=5
                     eureka.client.registryFetchIntervalSeconds=5
                     eureka.instance.leaseRenewalIntervalInSeconds=5
@@ -336,6 +339,7 @@ Microservices
                     server.port=9999
 
                     eureka.client.serviceUrl.defaultZone=http://localhost:9000/eureka/
+                    eureka.instance.prefer-ip-address=true
                     eureka.client.initialInstanceInfoReplicationIntervalSeconds=5
                     eureka.client.registryFetchIntervalSeconds=5
                     eureka.instance.leaseRenewalIntervalInSeconds=5
