@@ -433,7 +433,7 @@ Microservices
                     resilience4j.circuitbreaker.configs.default.eventConsumerBufferSize= 10
 
         Step 6: External Configuaration Design Pattern
-            inTheWorkSpace> md bt-props-repo
+            inTheWorkSpace> md btconfigrepo
                 //and then create these files in this directory
                     // gateway.properties
                     // profiles.properties
@@ -441,10 +441,10 @@ Microservices
                     // statement.properties
                     // move the content of 'application.properties' of each microservice into these respective files
                     
-                inTheWorkSpace> cd bt-props-repo
-                inTheWorkSpace\bt-props-repo> git init           
-                inTheWorkSpace\bt-props-repo> git add .
-                inTheWorkSpace\bt-props-repo> git commit -m "all service properties"
+                inTheWorkSpace> cd btconfigrepo
+                inTheWorkSpace\btconfigrepo> git init           
+                inTheWorkSpace\btconfigrepo> git add .
+                inTheWorkSpace\btconfigrepo> git commit -m "all service properties"
             
             in.bta:bta-discovery
             in.bta:bta-config
@@ -463,6 +463,7 @@ Microservices
                     spring.cloud.config.server.git.uri=file:///local/git/repo/path
 
                     eureka.client.serviceUrl.defaultZone=http://localhost:9000/eureka/
+                    eureka.instance.prefer-ip-address=true
                     eureka.client.initialInstanceInfoReplicationIntervalSeconds=5
                     eureka.client.registryFetchIntervalSeconds=5
                     eureka.instance.leaseRenewalIntervalInSeconds=5

@@ -34,8 +34,13 @@ public class TxnController {
 	private TxnService txnService;
 	
 	@GetMapping("/{ahId}/balance")
+	@CircuitBreaker(name="cb0",fallbackMethod = "profilesFallBackForBalance")
 	public ResponseEntity<Double> getBalance(@PathVariable("ahId")Long ahId) throws AccountHolderException{
 		return ResponseEntity.ok(txnService.getBalance(ahId));
+	}
+	
+	public ResponseEntity<Double> profilesFallBackForBalance(@PathVariable("ahId")Long ahId,Throwable t) throws AccountHolderException{
+		return ResponseEntity.ok(0.0);
 	}
 	
 	@GetMapping("/{ahId}/{start}/{end}")

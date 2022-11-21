@@ -300,3 +300,28 @@ Router Gaurds
     canActivateChild
     canDeActive
     canLoad
+
+Angular Testing
+-------------------------------------------------------------------
+
+    Jasmine
+        is a javascript TDD testing tool.
+
+        test-cases      it("test name or description",() => {
+                            //test case
+                        })
+
+        test-suites     describe("test suite name or description",()=>{
+                            //pre-test setup post-test clean up and test cases
+                        })
+
+    Karmna  
+        is a DI enabled angular team developed testing platform
+        for angular apps.
+
+        1. auto config DI 
+        2. provide out of the box testing artifacts and managers.
+
+        Karma detects any file with 'spec'as extention as a test file.
+
+        'ng test'
