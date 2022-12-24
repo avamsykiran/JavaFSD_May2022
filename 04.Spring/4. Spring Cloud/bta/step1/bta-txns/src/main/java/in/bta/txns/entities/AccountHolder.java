@@ -19,7 +19,7 @@ public class AccountHolder {
 	private Long ahId;
 	private Double currentBalance;
 	@JsonProperty(access = Access.WRITE_ONLY)
-	@OneToMany(mappedBy = "holder",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "holder")
 	private Set<Txn> txns;
 	
 	public AccountHolder() {

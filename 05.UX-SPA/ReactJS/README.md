@@ -503,3 +503,12 @@ ReactJS
                             </BrowserRouter>
                             
                             <Redirect to="targetUrl" />    
+
+    Testing
+    --------------------------------------------
+
+        JEST is a javascript testing library.
+
+        npm i -D --exact jest-watch-typeahead@0.6.5
+
+        npm test        to execute test cases.
